@@ -169,7 +169,7 @@ function App() {
           </p>
           <div className="hero-buttons">
             <a href="#projects" className="btn btn-primary" onClick={() => trackClick('View My Work')}>View My Work</a>
-            <a href="#" className="btn btn-secondary" onClick={() => trackClick('Download My CV')}>Download My CV</a>
+            <a href="https://drive.google.com/file/d/1tGHcrO2ucXgjz0QKe7rDLBZ2FQ2XhEIp/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-secondary" onClick={() => trackClick('Download My CV')}>Download My CV</a>
           </div>
         </div>
       </section>
@@ -285,27 +285,29 @@ function App() {
               <h3>Languages</h3>
               <div className="skills-list">
                 <span className="skill-pill">JavaScript</span>
-                <span className="skill-pill">Python</span>
                 <span className="skill-pill">HTML</span>
                 <span className="skill-pill">CSS</span>
+                <span className="skill-pill">Python (working knowledge)</span>
               </div>
             </div>
 
             <div className="skills-category">
-              <h3>Frameworks & Libraries</h3>
+              <h3>Frontend</h3>
               <div className="skills-list">
-                <span className="skill-pill">Bootstrap</span>
+                <span className="skill-pill">DOM manipulation</span>
+                <span className="skill-pill">Responsive design</span>
+                <span className="skill-pill">Flexbox</span>
+                <span className="skill-pill">CSS animations</span>
               </div>
             </div>
 
             <div className="skills-category">
-              <h3>CMS</h3>
+              <h3>Backend & APIs</h3>
               <div className="skills-list">
-                <span className="skill-pill">WordPress</span>
-                <span className="skill-pill">Wix Velo</span>
-                <span className="skill-pill">Wix Editor</span>
-                <span className="skill-pill">Wix Studio</span>
-                <span className="skill-pill">Framer</span>
+                <span className="skill-pill">Node.js concepts</span>
+                <span className="skill-pill">REST APIs</span>
+                <span className="skill-pill">Webhooks</span>
+                <span className="skill-pill">Backend automation logic</span>
               </div>
             </div>
 
@@ -319,37 +321,43 @@ function App() {
             </div>
 
             <div className="skills-category">
-              <h3>APIs & Integrations</h3>
+              <h3>Platforms & CMS</h3>
               <div className="skills-list">
-                <span className="skill-pill">REST APIs</span>
+                <span className="skill-pill">Wix Velo</span>
+                <span className="skill-pill">WordPress</span>
+                <span className="skill-pill">Framer</span>
+                <span className="skill-pill">Squarespace</span>
+              </div>
+            </div>
+
+            <div className="skills-category">
+              <h3>Automation & Integrations</h3>
+              <div className="skills-list">
+                <span className="skill-pill">Zapier</span>
+                <span className="skill-pill">API integrations</span>
                 <span className="skill-pill">Webhooks</span>
-                <span className="skill-pill">Zapier</span>
-                <span className="skill-pill">CRM Integrations</span>
+                <span className="skill-pill">Google Apps Script</span>
               </div>
             </div>
 
             <div className="skills-category">
-              <h3>Automation Tools</h3>
+              <h3>Tools</h3>
               <div className="skills-list">
-                <span className="skill-pill">Zapier</span>
-              </div>
-            </div>
-
-            <div className="skills-category">
-              <h3>Version Control, CI/CD & Deployment</h3>
-              <div className="skills-list">
-                <span className="skill-pill">CI/CD principles</span>
-                <span className="skill-pill">End-to-End Delivery Workflows</span>
                 <span className="skill-pill">Git</span>
+                <span className="skill-pill">GitHub</span>
+                <span className="skill-pill">VS Code</span>
+                <span className="skill-pill">Postman</span>
+                <span className="skill-pill">Figma</span>
               </div>
             </div>
 
             <div className="skills-category">
-              <h3>Development Methodology</h3>
+              <h3>Analytics & Tracking</h3>
               <div className="skills-list">
-                <span className="skill-pill">Agile</span>
-                <span className="skill-pill">Scrum</span>
-                <span className="skill-pill">Kanban</span>
+                <span className="skill-pill">Google Analytics 4</span>
+                <span className="skill-pill">Google Search Console</span>
+                <span className="skill-pill">Microsoft Clarity</span>
+                <span className="skill-pill">schema.org structured data</span>
               </div>
             </div>
           </div>
@@ -362,13 +370,16 @@ function App() {
           <div className="about-text">
             <h2>About Me.</h2>
             <p>
-              I'm a Junior Web Developer with a passion for building user-friendly websites. I have experience working with real clients, helping small businesses establish their online presence.
+              I'm a Full-Stack Developer focused on building automation-driven web systems and integrations. I enjoy designing solutions that connect platforms, automate workflows, and transform complex business processes into scalable software.
             </p>
             <p>
-              My journey started with self-taught coding and has evolved into building custom solutions using modern web technologies. I enjoy solving problems and turning designs into functional, responsive websites.
+              I have experience developing production systems used by thousands of users, integrating APIs, and building automation pipelines that reduce manual work and improve data flow.
             </p>
             <p>
-              When I'm not coding, you can find me exploring new tech trends or working on personal projects to expand my portfolio.
+              My journey started with self-taught coding and evolved into building real-world systems for businesses and startups. I enjoy solving technical problems, optimizing workflows, and turning ideas into reliable digital products.
+            </p>
+            <p>
+              Outside development, I enjoy exploring new technologies, automation tools, and AI-assisted development.
             </p>
           </div>
           {/* <div className="about-image">
@@ -386,7 +397,7 @@ function App() {
           </p>
           <div className="contact-links">
             <a href="mailto:eduard.proca93@gmail.com" className="btn btn-primary" onClick={() => trackClick('Email Me')}>Email Me</a>
-            <a href="Https://www.linkedin.com/in/eduard-p-34a06b232" className="linkedin-link" onClick={() => trackClick('Connect on LinkedIn')}>Connect on LinkedIn</a>
+            <a href="Https://www.linkedin.com/in/eduard-p-34a06b232" target="_blank" rel="noopener noreferrer" className="btn btn-secondary" onClick={() => trackClick('Connect on LinkedIn')}>Connect on LinkedIn</a>
           </div>
         </div>
       </section>
