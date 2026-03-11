@@ -179,6 +179,24 @@ function App() {
         <div className="container">
           <h2>Projects</h2>
           <div className="projects-grid">
+            {/* Project ProveIt */}
+            <div className="project-card">
+              <h3>Lead-Generation & Automation Platform</h3>
+              <ul>
+                <li>Develop and maintain a platform serving 10k+ monthly users, processing 50+ daily leads</li>
+                <li>Designed backend workflows and automation pipelines connecting platform data with CRMs and third-party APIs</li>
+                <li>Developed a financial claim qualification calculator including UI, backend logic, and API integrations</li>
+                <li>Led an automated database migration system using batch-processing to update 27,000+ existing records</li>
+              </ul>
+              <br />
+              <div className="tech-stack">
+                <span className="tech-tag">Wix Velo</span>
+                <span className="tech-tag">REST API</span>
+                <span className="tech-tag">Webhooks</span>
+                <span className="tech-tag">JavaScript</span>
+              </div>
+            </div>
+
             {/* Project 1 */}
             <div className="project-card">
               <h3>Hospitality Booking System</h3>
@@ -190,6 +208,7 @@ function App() {
               </ul>
               {/* <p>Created a booking system for a hospitality business with on demands UX. The booking system has been developed in a hybrid apporach which means it was built using Wix's existing booking calendar, with custom code to manipulate the booking price based on age crietion, to accept and cancel bookings based on payment validation and to allow multiples users booking the same slot until it gets booked out.
                 The payment required API integrations. The system also benefits of a cron job to release slotsl that are on hold and niether declined or confirmed  </p> */}
+              <br />
               <div className="tech-stack">
                 <span className="tech-tag">Wix</span>
                 <span className="tech-tag">Wix CMS</span>
@@ -207,6 +226,7 @@ function App() {
                 <li>Implemented product categorisation, secure payments, and inventory management</li>
               </ul>
               {/* <p>Developed a e-commerce site for a reseller, focusing on a seamless UX from browsing to checkout. Implemented key features including categorization, secure payment, and inventory management.</p> */}
+              <br />
               <div className="tech-stack">
                 <span className="tech-tag">Wix</span>
                 <span className="tech-tag">Wix CMS</span>
@@ -225,6 +245,7 @@ function App() {
                 <li>Optimised to showcase projects and creative work</li>
               </ul>
               {/* <p>Developed a visually bold website that highlights work through large imagery, subtle animations, and a modern, grid-based layout.</p> */}
+              <br />
               <div className="tech-stack">
                 <span className="tech-tag">Framer</span>
                 <span className="tech-tag">Figma</span>
@@ -242,6 +263,7 @@ function App() {
                 <li>Enabled direct online enquiries and bookings</li>
               </ul>
               {/* <p>Redesigned the site with a modern, elegant layout focused on visuals and simplicity — helping clients explore photo booth options, view real event galleries, and book directly online with ease.</p> */}
+              <br />
               <div className="tech-stack">
                 <span className="tech-tag">Wix</span>
                 <span className="tech-tag">Wix CMS</span>
@@ -258,6 +280,7 @@ function App() {
                 <li>Currently under development...</li>
               </ul>
               {/* <p>Developed a soft, romantic design with modern touches that highlights testimonials, services, and past events — making it easy for couples to connect and start planning their big day.</p> */}
+              <br />
               <div className="tech-stack">
                 <span className="tech-tag">WordPress</span>
                 <span className="tech-tag">Figma</span>
