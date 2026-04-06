@@ -31,6 +31,8 @@ function ProjectsSection({ projects, projectsError, trackClick }) {
                 category={project.category || 'Project'}
                 industry={project.industry || 'Client Work'}
                 image={project.image}
+                beforeImage={project.beforeImage}
+                brandColor={project.brandColor}
                 description={project.description || project.summary || ''}
                 summary={project.summary || project.description || ''}
                 highlights={project.highlights}

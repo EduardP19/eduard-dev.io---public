@@ -8,6 +8,8 @@ const FALLBACK_PROJECTS = [
     category: 'Wedding · Web Design',
     industry: 'Luxury Events',
     image: '/projects/say-i-do-weddings.svg',
+    beforeImage: null,
+    brandColor: '#f6c7c1',
     description:
       'A romantic, conversion-focused site for a UK wedding planner. Designed to feel premium quickly and support higher-value enquiries.',
     summary:
@@ -28,6 +30,8 @@ const FALLBACK_PROJECTS = [
     category: 'Events · Booking Site',
     industry: 'Experiential Brand',
     image: '/projects/the-memory-corners.svg',
+    beforeImage: null,
+    brandColor: '#57d6c4',
     description:
       'A polished site for a photo booth company with online booking flows, event galleries, and a layout built to convert busy visitors fast.',
     summary:
@@ -48,6 +52,8 @@ const FALLBACK_PROJECTS = [
     category: 'Creative · Portfolio',
     industry: 'Creative Consultant',
     image: '/projects/txengo.svg',
+    beforeImage: null,
+    brandColor: '#ff5f8f',
     description:
       'A bold creative portfolio with punchy visuals, structured storytelling, and smooth motion that keeps the work front and centre.',
     summary:
@@ -68,6 +74,8 @@ const FALLBACK_PROJECTS = [
     category: 'Automation · Platform',
     industry: 'Lead Generation Platform',
     image: '/projects/proveit.svg',
+    beforeImage: null,
+    brandColor: '#6f9bff',
     description:
       'Designed backend workflows handling 50+ daily leads and 250+ API requests across website, Facebook, TikTok, and manual lead sources. Built automation pipelines connected to CRM and third-party APIs (180+ automated workflows/day), implemented post-lead email sequences reducing advisory phone time by ~30 minutes per client, developed an end-to-end financial claim qualification calculator, and led production deployment/debugging via GitHub and Wix CLI.',
     summary:
@@ -95,6 +103,8 @@ const FALLBACK_PROJECTS = [
     category: 'Education · Agency',
     industry: 'Education Brand',
     image: '/projects/study-and-succeed.svg',
+    beforeImage: null,
+    brandColor: '#4fc4ff',
     description:
       'A bilingual language travel site with clearer programme filtering, student-first navigation, and a cleaner path from discovery to enquiry.',
     summary:
@@ -111,6 +121,12 @@ const FALLBACK_PROJECTS = [
 ]
 
 const projectSelect =
+  'id, slug, title, category, industry, image, before_image, brand_color, description, summary, highlights, live_url, case_study, featured, published, sort_order, created_at'
+const projectSelectWithoutBrandColor =
+  'id, slug, title, category, industry, image, before_image, description, summary, highlights, live_url, case_study, featured, published, sort_order, created_at'
+const projectSelectWithoutBeforeImage =
+  'id, slug, title, category, industry, image, brand_color, description, summary, highlights, live_url, case_study, featured, published, sort_order, created_at'
+const projectSelectWithoutOptionalColumns =
   'id, slug, title, category, industry, image, description, summary, highlights, live_url, case_study, featured, published, sort_order, created_at'
 const projectSelectWithoutImage =
   'id, slug, title, category, industry, description, summary, highlights, live_url, case_study, featured, published, sort_order, created_at'
@@ -130,6 +146,29 @@ function normalizeHighlights(value) {
   return []
 }
 
+function normalizeBrandColor(value) {
+  if (typeof value !== 'string') {
+    return null
+  }
+
+  const trimmed = value.trim()
+  if (!trimmed) {
+    return null
+  }
+
+  const shortHexMatch = /^#([0-9a-fA-F]{3})$/.exec(trimmed)
+  if (shortHexMatch) {
+    const [r, g, b] = shortHexMatch[1].split('')
+    return `#${r}${r}${g}${g}${b}${b}`.toLowerCase()
+  }
+
+  if (/^#([0-9a-fA-F]{6})$/.test(trimmed)) {
+    return trimmed.toLowerCase()
+  }
+
+  return null
+}
+
 function normalizeProject(project) {
   return {
     id: project.id,
@@ -138,6 +177,8 @@ function normalizeProject(project) {
     category: project.category ?? 'Project',
     industry: project.industry ?? 'Client Work',
     image: project.image ?? null,
+    beforeImage: project.before_image ?? project.beforeImage ?? null,
+    brandColor: normalizeBrandColor(project.brand_color ?? project.brandColor),
     description: project.description ?? '',
     summary: project.summary ?? project.description ?? '',
     highlights: normalizeHighlights(project.highlights),
@@ -155,23 +196,45 @@ export async function getPublishedProjects() {
     return FALLBACK_PROJECTS
   }
 
-  let { data, error } = await supabase
-    .from('projects')
-    .select(projectSelect)
-    .eq('published', true)
-    .order('sort_order', { ascending: true })
-    .order('created_at', { ascending: false })
-
-  if (error && error.message?.toLowerCase().includes('image')) {
-    const fallbackQuery = await supabase
+  const runProjectsQuery = async (selectClause) =>
+    supabase
       .from('projects')
-      .select(projectSelectWithoutImage)
+      .select(selectClause)
       .eq('published', true)
       .order('sort_order', { ascending: true })
       .order('created_at', { ascending: false })
 
-    data = fallbackQuery.data
-    error = fallbackQuery.error
+  let data = null
+  let error = null
+
+  const selectVariants = [
+    projectSelect,
+    projectSelectWithoutBrandColor,
+    projectSelectWithoutBeforeImage,
+    projectSelectWithoutOptionalColumns,
+    projectSelectWithoutImage,
+  ]
+
+  for (const selectClause of selectVariants) {
+    const result = await runProjectsQuery(selectClause)
+
+    if (!result.error) {
+      data = result.data
+      error = null
+      break
+    }
+
+    data = result.data
+    error = result.error
+
+    const message = error.message?.toLowerCase() ?? ''
+    const isMissingColumnError =
+      message.includes('does not exist') || message.includes('unknown column')
+
+    // Stop trying variants for non-column errors (auth/network/etc).
+    if (!isMissingColumnError) {
+      break
+    }
   }
 
   if (error) {
