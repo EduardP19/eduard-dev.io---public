@@ -235,7 +235,9 @@ function App() {
             ) : <span className="hero-label">Hi, I'm Eduard</span>}
             <h1>Web Developer with<br />Real Client Experience</h1>
             <p>
-              I build fast, conversion-focused websites for small businesses using HTML, CSS, JavaScript, Wix and WordPress. Available for developer roles.
+              I build fast, conversion-focused web products using JavaScript/TypeScript, React,
+              Next.js, APIs, AI Agents, and Automations across custom builds, Wix, and
+              WordPress. Available for developer roles.
             </p>
             <div className="hero-buttons">
               <a href="#projects" className="btn btn-primary" onClick={() => trackClick('View My Work')}>View My Work</a>
