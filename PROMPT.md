@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Build a personal developer portfolio site for **Eduard** — a junior/mid developer who builds AI-powered web applications. The site serves as a job-hunting tool: it must impress hiring managers at AI-forward startups and mid-size tech companies in the UK.
+Build a personal developer portfolio site for **Eduard** — a developer who builds AI-powered web applications. The site serves as a job-hunting tool: it must impress hiring managers at AI-forward startups and mid-size tech companies in the UK.
 
 The site has ONE job: get Eduard interviews.
 
@@ -49,7 +49,7 @@ Single-page scrolling site with smooth anchor navigation. 6 sections:
 ### 1. Hero Section
 - Full viewport height
 - Name: **Eduard**
-- Title: **Junior Developer**
+- Title: **Web Developer**
 - Subtitle: **"I build AI-powered web apps with Next.js, React, and Claude API."**
 - Two CTAs: "View My Work" (scrolls to projects) | "Download CV" (PDF download)
 - Subtle animated background (gradient mesh or grid pattern that moves slowly)
@@ -64,7 +64,7 @@ I've shipped an AI-powered reception agent for beauty salons, rebuilt client
 websites with Stripe and CMS integrations, and I'm comfortable working across 
 the full stack — from frontend to API to deployment.
 
-I'm looking for a junior/mid developer role at a company that's serious about AI.
+I'm looking for a developer role at a company that's serious about AI.
 ```
 
 - Tech stack visual grid showing tools/languages with icons:
@@ -123,7 +123,7 @@ I'm looking for a junior/mid developer role at a company that's serious about AI
 
 ### 6. Contact Section
 - Heading: "Let's Talk"
-- Subheading: "I'm actively looking for a junior/mid developer role at an AI-forward company."
+- Subheading: "I'm actively looking for a developer role at an AI-forward company."
 - Contact methods:
   - Email: (Eduard's email)
   - LinkedIn: (Eduard's LinkedIn profile link)

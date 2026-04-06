@@ -20,10 +20,10 @@ function ProjectsSection({ projects, projectsError, trackClick }) {
           {safeProjects.map((project, index) => (
             <MotionDiv
               key={project.id ?? project.slug ?? project.title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.55, delay: index * 0.06 }}
+              viewport={{ once: true, amount: 0.08 }}
+              transition={{ duration: 0.28, delay: index * 0.02, ease: 'easeOut' }}
               className={project.featured || index === 0 ? 'portfolio-grid-featured' : ''}
             >
               <ProjectCard

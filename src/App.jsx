@@ -233,9 +233,9 @@ function App() {
                 <div><span className="hero-label">I'm Eduard</span></div>
               </div>
             ) : <span className="hero-label">Hi, I'm Eduard</span>}
-            <h1>Junior Web Developer with<br />Real Client Experience</h1>
+            <h1>Web Developer with<br />Real Client Experience</h1>
             <p>
-              I build fast, conversion-focused websites for small businesses using HTML, CSS, JavaScript, Wix and WordPress. Available for junior roles.
+              I build fast, conversion-focused websites for small businesses using HTML, CSS, JavaScript, Wix and WordPress. Available for developer roles.
             </p>
             <div className="hero-buttons">
               <a href="#projects" className="btn btn-primary" onClick={() => trackClick('View My Work')}>View My Work</a>
@@ -390,7 +390,7 @@ function App() {
               launch.
             </p>
             <p>
-              I'm now looking for a junior or mid-level developer role where I can keep building,
+              I'm now looking for a developer role where I can keep building,
               learn from experienced engineers, and contribute to a team working on meaningful
               products, especially where AI is part of the workflow or product itself.
             </p>
@@ -406,7 +406,7 @@ function App() {
         <div className="container">
           <h2>Let's Work Together</h2>
           <p>
-            I'm currently available for junior developer roles. If you're looking for someone who is eager to learn and ready to contribute, I'd love to hear from you.
+            I'm currently available for developer roles. If you're looking for someone who is eager to learn and ready to contribute, I'd love to hear from you.
           </p>
           <div className="contact-links">
             <a href="mailto:eduard.proca93@gmail.com" className="btn btn-primary" onClick={() => trackClick('Email Me')}>Email Me</a>
