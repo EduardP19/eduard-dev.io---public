@@ -1,18 +1,27 @@
-# React + Vite
+# eduard-dev.io — Build Kit
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## What's in this folder
 
-Currently, two official plugins are available:
+| File | Purpose |
+|------|---------|
+| `PROMPT.md` | Full project spec — branding, site structure, technical requirements, file structure. This is the master brief. |
+| `CHATBOT-SYSTEM-PROMPT.md` | The system prompt for the AI chatbot. Contains Eduard's full CV data, personality guidelines, and response rules. Load this into the API route. |
+| `SKILL.md` | Step-by-step build guide for Codex / Claude Code. Phase-by-phase instructions, code standards, design rules, and common pitfalls. |
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to use with Codex / Claude Code
 
-## React Compiler
+1. Create a new repo: `eduard-dev-portfolio`
+2. Copy all three files into the repo root
+3. Open in Codex or Claude Code
+4. Point the agent at `SKILL.md` first — it contains the build order
+5. Reference `PROMPT.md` for all content, branding, and structural decisions
+6. The chatbot system prompt in `CHATBOT-SYSTEM-PROMPT.md` gets loaded into `/lib/chatbot-prompt.ts`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## After building
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Portfolio
-# Portfolio
+- [x] Replace placeholder email, LinkedIn, and GitHub URLs (search for `TODO`)
+- [x] Add project images to `/public/projects/`
+- [x] Add your CV PDF to `/public/cv/eduard-cv.pdf`
+- [ ] Set `GEMINI_API_KEY` (or `GOOGLE_API_KEY`) in Vercel environment variables
+- [ ] Purchase and configure domain: eduard-dev.io
+- [ ] Test the chatbot on the live site

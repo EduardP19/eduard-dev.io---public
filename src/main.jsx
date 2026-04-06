@@ -3,23 +3,21 @@ import { createRoot } from 'react-dom/client'
 import ReactGA from 'react-ga4'
 import './index.css'
 import App from './App.jsx'
+import ChatProvider from './context/ChatProvider.jsx'
 
 // Initialize Google Analytics
 // REPLACE 'G-XXXXXXXXXX' WITH YOUR ACTUAL MEASUREMENT ID
-ReactGA.initialize('G-05RX88Q60R');
+if (import.meta.env.PROD) {
+  ReactGA.initialize('G-05RX88Q60R');
+  ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+}
 
-// Send initial page view
-ReactGA.send({ hitType: "pageview", page: window.location.pathname });
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+const appTree = (
+  <ChatProvider>
     <App />
-  </StrictMode>,
+  </ChatProvider>
 )
 
-const trackClick = (label) => {
-  window.gtag('event', 'click', {
-    event_category: 'CTA',
-    event_label: label,
-  });
-};
+createRoot(document.getElementById('root')).render(
+  import.meta.env.PROD ? <StrictMode>{appTree}</StrictMode> : appTree,
+)
