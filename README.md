@@ -1,27 +1,101 @@
-# eduard-dev.io — Build Kit
+# eduard-dev.io
 
-## What's in this folder
+Personal portfolio website for Eduard Proca, built with React + Vite and deployed as a static frontend with a serverless chat endpoint.
 
-| File | Purpose |
-|------|---------|
-| `PROMPT.md` | Full project spec — branding, site structure, technical requirements, file structure. This is the master brief. |
-| `CHATBOT-SYSTEM-PROMPT.md` | The system prompt for the AI chatbot. Contains Eduard's full CV data, personality guidelines, and response rules. Load this into the API route. |
-| `SKILL.md` | Step-by-step build guide for Codex / Claude Code. Phase-by-phase instructions, code standards, design rules, and common pitfalls. |
+## Project overview
 
-## How to use with Codex / Claude Code
+This repository contains Eduard's public portfolio:
 
-1. Create a new repo: `eduard-dev-portfolio`
-2. Copy all three files into the repo root
-3. Open in Codex or Claude Code
-4. Point the agent at `SKILL.md` first — it contains the build order
-5. Reference `PROMPT.md` for all content, branding, and structural decisions
-6. The chatbot system prompt in `CHATBOT-SYSTEM-PROMPT.md` gets loaded into `/lib/chatbot-prompt.ts`
+- Hero, Projects, Skills, About, and Contact sections
+- Dynamic project loading from Supabase with a local fallback dataset
+- Embedded "Ask My AI" assistant (inline section + floating widget)
+- Server-side Gemini chat route with validation and rate limiting
+- Mobile-first responsive behavior and touch-friendly UI adjustments
 
-## After building
+## Stack
 
-- [x] Replace placeholder email, LinkedIn, and GitHub URLs (search for `TODO`)
-- [x] Add project images to `/public/projects/`
-- [x] Add your CV PDF to `/public/cv/eduard-cv.pdf`
-- [ ] Set `GEMINI_API_KEY` (or `GOOGLE_API_KEY`) in Vercel environment variables
-- [ ] Purchase and configure domain: eduard-dev.io
-- [ ] Test the chatbot on the live site
+- Frontend: React 19, Vite 5, CSS
+- Motion/UI: Framer Motion, Lucide React
+- Data: Supabase JS client
+- Analytics: react-ga4 (Google Analytics)
+- AI runtime: Gemini (`gemini-2.5-flash`) via `api/chat.js`
+
+## Repo structure
+
+- `src/` — frontend app
+- `src/components/` — UI components (projects, chat, cards)
+- `src/context/` — chat state management
+- `src/lib/` — Supabase client, fallback project data, fallback chat answers
+- `api/chat.js` — serverless chat endpoint
+- `dev/viteChatApiPlugin.js` — mounts `/api/chat` in Vite dev/preview
+- `public/projects/` — project preview images
+- `public/cv/` — CV file
+
+## Local development
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start dev server:
+   ```bash
+   npm run dev
+   ```
+3. Production build:
+   ```bash
+   npm run build
+   npm run preview
+   ```
+
+## Environment variables
+
+Create a local env file (for example `.env.local`) and set:
+
+```env
+VITE_SUPABASE_URL=...
+VITE_SUPABASE_ANON_KEY=...
+GEMINI_API_KEY=...
+GOOGLE_API_KEY=... # optional alias
+GEMINI_MODEL=gemini-2.5-flash
+```
+
+Notes:
+
+- API keys must stay server-side only.
+- `.env*` files are ignored by git via `.gitignore`.
+
+## Git and push workflow
+
+This local project is intended to push to:
+
+`https://github.com/Eduard-dev-io/eduard-dev.io---public`
+
+Typical commands:
+
+```bash
+# set remote once
+git remote add origin https://github.com/Eduard-dev-io/eduard-dev.io---public.git
+
+# stage + commit
+git add -A
+git commit -m "Update portfolio content and chat features"
+
+# push main
+git push -u origin main
+```
+
+For later pushes:
+
+```bash
+git add -A
+git commit -m "Your message"
+git push
+```
+
+## Internal planning docs
+
+The following files are retained for project context and AI-assisted development workflow:
+
+- `PROMPT.md`
+- `SKILL.md`
+- `CHATBOT-SYSTEM-PROMPT.md`
