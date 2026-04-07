@@ -83,7 +83,6 @@ export async function logEduardDevEvent({
   pagePath = null,
   referrer = null,
   metadata = {},
-  chatTurn = null,
 }) {
   if (!supabase || typeof window === 'undefined') {
     return
@@ -93,15 +92,11 @@ export async function logEduardDevEvent({
   const attribution = getAttribution(searchParams)
   const userAgent = navigator.userAgent
   const occurredAt = new Date().toISOString()
-  const normalizedChatTurn =
-    chatTurn && typeof chatTurn === 'object'
-      ? {
-          role: chatTurn.role ?? null,
-          content: chatTurn.content ?? null,
-          occurred_at: occurredAt,
-          source: chatTurn.source ?? null,
-        }
-      : null
+  const normalizedEvent = {
+    event_name: eventName,
+    event_type: eventType,
+    occured_at: occurredAt,
+  }
 
   const { error } = await supabase.rpc(LOG_SESSION_RPC, {
     p_session_id: getOrCreateSessionId(),
@@ -130,8 +125,9 @@ export async function logEduardDevEvent({
       recruiter_company: attribution.recruiter_company,
       recruiter_industry: attribution.recruiter_industry,
       ...metadata,
+      events: [normalizedEvent],
     },
-    p_chat_turn: normalizedChatTurn,
+    p_chat_turn: null,
   })
 
   if (error && import.meta.env.DEV) {
