@@ -49,7 +49,7 @@ Single-page scrolling site with smooth anchor navigation. 6 sections:
 ### 1. Hero Section
 - Full viewport height
 - Name: **Eduard**
-- Title: **Web Developer**
+- Title: **Full Stack Developer**
 - Subtitle: **"I build AI-powered web apps with Next.js, React, and Claude API."**
 - Two CTAs: "View My Work" (scrolls to projects) | "Download CV" (PDF download)
 - Subtle animated background (gradient mesh or grid pattern that moves slowly)
@@ -117,7 +117,7 @@ I'm looking for a developer role at a company that's serious about AI.
 ### 5. Experience Timeline
 - Simple vertical timeline showing:
   - **2024-Present:** Freelance Developer — Building AI-powered products and client websites
-  - **2021-2024:** Digital Consultant (EZWebOne) — Web development, CMS builds, client projects
+  - **2021-2024:** Digital Consultant (EZWebOne) — Full Stack development, CMS builds, client projects
   - **2021:** Graduated — STEM, University of Bedfordshire
 - Keep it minimal. The projects section does the heavy lifting.
 

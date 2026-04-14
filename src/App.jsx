@@ -245,7 +245,7 @@ function App() {
                 <div><span className="hero-label">I'm Eduard</span></div>
               </div>
             ) : <span className="hero-label">Hi, I'm Eduard</span>}
-            <h1>Web Developer with<br />Real Client Experience</h1>
+            <h1>Full Stack Developer with<br />Real Client Experience</h1>
             <p>
               I build fast, conversion-focused web products using JavaScript/TypeScript, React,
               Next.js, APIs, AI Agents, and Automations across custom builds, Wix, and

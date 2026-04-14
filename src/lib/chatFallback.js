@@ -12,7 +12,7 @@ const FALLBACK_RESPONSES = [
   {
     patterns: ['hire', 'available', 'role', 'job'],
     answer:
-      "Eduard is open to web developer opportunities and can contribute across frontend work, API integrations, and automation-heavy features. You can reach him via the contact section on this page.",
+      "Eduard is open to full-stack developer opportunities and can contribute across frontend work, API integrations, and automation-heavy features. You can reach him via the contact section on this page.",
   },
   {
     patterns: ['contact', 'email', 'linkedin', 'cv', 'resume'],

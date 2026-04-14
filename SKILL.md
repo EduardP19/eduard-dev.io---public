@@ -1,4 +1,5 @@
 # SKILL.md — Portfolio Site Build Guide
+
 # Instructions for Codex / Claude Code when building eduard-dev.io
 
 ---
@@ -18,7 +19,8 @@ A personal developer portfolio for Eduard at eduard-dev.io. Single-page Next.js 
 Follow this sequence. Do not skip steps.
 
 ### Phase 1: Scaffold (30 mins)
-1. `npx create-next-app@latest eduard-dev-portfolio --typescript --tailwind --app --src-dir=false --import-alias="@/*"` 
+
+1. `npx create-next-app@latest eduard-dev-portfolio --typescript --tailwind --app --src-dir=false --import-alias="@/*"`
 2. Install dependencies: `npm install @anthropic-ai/sdk framer-motion lucide-react`
 3. Set up folder structure as defined in PROMPT.md
 4. Configure fonts in `layout.tsx` — use Google Fonts. Pick a distinctive mono for headings (JetBrains Mono or similar) and a clean sans for body (Geist, Outfit, or similar). Do NOT use Inter or Arial.
@@ -26,12 +28,14 @@ Follow this sequence. Do not skip steps.
 6. Create CSS variables for dark/light mode theming in `globals.css`
 
 ### Phase 2: Layout & Navigation (1 hour)
+
 1. Build `Navbar.tsx` — fixed, transparent-to-solid on scroll, logo left, links right, mobile hamburger, dark/light toggle
 2. Build `Footer.tsx` — minimal, with social links
 3. Set up smooth scrolling between sections in `page.tsx`
 4. Test mobile responsiveness at every step
 
 ### Phase 3: Content Sections (2-3 hours)
+
 Build each section as a separate component. Import and stack them in `page.tsx`.
 
 1. **Hero.tsx** — full viewport, animated background (CSS gradient mesh or subtle grid), name, title, tagline, two CTA buttons. Add Framer Motion entrance animations (fade up, stagger).
@@ -42,6 +46,7 @@ Build each section as a separate component. Import and stack them in `page.tsx`.
 6. **Contact.tsx** — heading, subheading, direct links (email, LinkedIn, GitHub), CV download button.
 
 ### Phase 4: AI Chatbot (2-3 hours)
+
 This is the most important feature. Build it well.
 
 1. **ChatProvider.tsx** — React context that holds conversation state (messages array), sendMessage function, loading state. This is shared between the floating widget and inline section.
@@ -57,6 +62,7 @@ This is the most important feature. Build it well.
    - Handles errors gracefully (rate limits, API failures)
 
 ### Phase 5: Polish (1-2 hours)
+
 1. Add scroll-triggered animations with Framer Motion (fade in on scroll for each section)
 2. Add subtle background texture (CSS noise/grain) on dark sections
 3. Test dark/light mode toggle — every section must look good in both
@@ -65,6 +71,7 @@ This is the most important feature. Build it well.
 6. Add meta tags, Open Graph image, and favicon
 
 ### Phase 6: Deploy
+
 1. Push to GitHub (personal account, public repo)
 2. Connect repo to Vercel
 3. Add `ANTHROPIC_API_KEY` environment variable in Vercel
@@ -127,7 +134,7 @@ This is the most important feature. Build it well.
 - Use the updated CV context when answering professional background questions.
 - Current timeline to preserve:
   - **Full-Stack Developer — ProveIt (March 2024–Present)**: lead-generation platform, automation workflows, API-heavy backend logic, production deployments.
-  - **Freelance Web Developer — EZWebOne (December 2024–Present)**: client websites/systems across hospitality, events, e-commerce, education.
+  - **Freelance Full Stack Developer — EZWebOne (December 2024–Present)**: client websites/systems across hospitality, events, e-commerce, education.
 - Treat both tracks as active; do not present them as mutually exclusive.
 - For ProveIt context, emphasize:
   - multi-source lead ingestion and workflow automation
