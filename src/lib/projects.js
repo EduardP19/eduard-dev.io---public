@@ -170,7 +170,7 @@ const LOCAL_PROJECT_IMAGE_ENTRIES = LOCAL_PROJECT_IMAGE_FILES.map((filename) => 
   const stem = filename.replace(/\.[^.]+$/, '').trim()
   const kind = BEFORE_PREFIX.test(stem) ? 'before' : 'after'
   const withoutPrefix = kind === 'before' ? stem.replace(BEFORE_PREFIX, '') : stem
-  const [base] = withoutPrefix.split(/\s*-\s*/, 1)
+  const [base] = withoutPrefix.split(/\s+-\s+/, 1)
 
   return {
     src: `/projects/${filename}`,
