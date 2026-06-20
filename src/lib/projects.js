@@ -131,7 +131,7 @@ const LOCAL_PROJECT_IMAGE_FILES = [
   'Before - The Bus Stop.webp',
   'ProvieIt - CF1.webp',
   'Resevia-Agent - Sandbox.webp',
-  'Resevia-Website - Home.webp',
+  'Resevia - Home.webp',
   'SayIDoWeddings - Home.webp',
   'StudyAndSucceed - Home.webp',
   'TheBusStop - Home.webp',
@@ -260,8 +260,8 @@ function normalizeProject(project) {
     title: project.title,
     category: project.category ?? 'Project',
     industry: project.industry ?? 'Client Work',
-    image: localImages.image ?? null,
-    beforeImage: localImages.beforeImage ?? null,
+    image: project.image_url ?? project.image ?? localImages.image ?? null,
+    beforeImage: project.before_image ?? localImages.beforeImage ?? null,
     brandColor: normalizeBrandColor(project.brand_color ?? project.brandColor),
     description: project.description ?? '',
     summary: project.summary ?? project.description ?? '',
@@ -292,6 +292,9 @@ export async function getPublishedProjects() {
   let error = null
 
   const selectVariants = [
+    projectSelect + ', image, image_url, before_image',
+    projectSelect + ', image_url',
+    projectSelect + ', image',
     projectSelect,
     projectSelectWithoutBrandColor,
   ]
