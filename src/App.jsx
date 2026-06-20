@@ -5,7 +5,7 @@ import ProjectsSection from './components/ProjectsSection'
 import { getPublishedProjects } from './lib/projects'
 
 const GITHUB_URL = 'https://github.com/EduardP19'
-const CV_URL = 'https://drive.google.com/file/d/1mV3K7SWDF0PMmQ7QA9zIuaFphL4w2Md_/view?usp=sharing'
+const CV_URL = 'https://drive.google.com/file/d/1qiT5M3p4lZYg27sM1F-3TteYBSjY2mv3/view?usp=sharing'
 
 const trackClick = (label) => {
   window.gtag('event', 'cta_click', {
