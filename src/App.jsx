@@ -5,7 +5,7 @@ import ProjectsSection from './components/ProjectsSection'
 import { getPublishedProjects } from './lib/projects'
 
 const GITHUB_URL = 'https://github.com/EduardP19'
-const CV_URL = 'https://drive.google.com/file/d/1wnreWM5P-9B8CyMWk24TxSDSn2V1udEl/view?usp=sharing'
+const CV_URL = 'https://drive.google.com/file/d/1XUSJhjl18eZeAD0b0ci4I0BmOkL5394K/view?usp=sharing'
 
 const trackClick = (label) => {
   window.gtag('event', 'cta_click', {
@@ -233,7 +233,7 @@ function App() {
           id="background-video"
           preload="metadata"
         >
-          <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-city-at-night-1579/1080p.mp4" type="video/mp4" />
+          <source src="https://video.wixstatic.com/video/11062b_b02d1b7883d5447fb2453acb93a5102b/1080p/mp4/file.mp4" type="video/mp4" />
         </video>
         <div className="container hero-content">
           <div className="hero-copy">
@@ -245,7 +245,7 @@ function App() {
                 <div><span className="hero-label">I'm Eduard</span></div>
               </div>
             ) : <span className="hero-label">Hi, I'm Eduard</span>}
-            <h1>Full Stack Developer with<br />Real Client Experience</h1>
+            <h1>AI Software Engineer</h1>
             <p>
               I build fast, conversion-focused web products using JavaScript/TypeScript, React,
               Next.js, APIs, AI Agents, and Automations across custom builds and WordPress.
@@ -396,7 +396,7 @@ function App() {
           <div className="about-text">
             <h2>About Me.</h2>
             <p>
-              I'm a UK-based developer with hands-on experience building AI-powered products,
+              I'm a developer with hands-on experience building AI-powered products,
               client websites, and automation-led digital systems. My work sits across frontend
               development, API integrations, and practical solutions that help businesses operate
               more efficiently.
@@ -409,7 +409,7 @@ function App() {
               architecture, and shipping around a real business problem.
             </p>
             <p>
-              Before that, through EZWebOne, I delivered websites and CMS builds for small business
+              Before that, through ezwebone.co.uk — my freelance brand — I delivered websites and CMS builds for small business
               clients, including custom CMS work, Stripe integrations, and internal
               documentation so non-technical teams could manage their sites confidently after
               launch.
