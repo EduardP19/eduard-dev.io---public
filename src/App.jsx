@@ -300,8 +300,6 @@ function App() {
               <div className="skills-list">
                 <span className="skill-pill">JavaScript</span>
                 <span className="skill-pill">TypeScript</span>
-                <span className="skill-pill">HTML</span>
-                <span className="skill-pill">CSS</span>
                 <span className="skill-pill">Python</span>
               </div>
             </div>
@@ -310,92 +308,51 @@ function App() {
               <h3>Frontend</h3>
               <div className="skills-list">
                 <span className="skill-pill">React</span>
-                <span className="skill-pill">Next.js 14 (App Router)</span>
+                <span className="skill-pill">Next.js</span>
                 <span className="skill-pill">Tailwind CSS</span>
-                <span className="skill-pill">DOM manipulation</span>
-                <span className="skill-pill">Responsive design</span>
               </div>
             </div>
 
             <div className="skills-category">
-              <h3>Backend & APIs</h3>
+              <h3>Backend & Data</h3>
               <div className="skills-list">
                 <span className="skill-pill">Node.js</span>
-                <span className="skill-pill">Supabase (PostgreSQL)</span>
                 <span className="skill-pill">REST APIs</span>
                 <span className="skill-pill">Webhooks</span>
-                <span className="skill-pill">Cal.com API</span>
-                <span className="skill-pill">Google Calendar API</span>
-                <span className="skill-pill">Stripe API</span>
+                <span className="skill-pill">Supabase (PostgreSQL)</span>
+                <span className="skill-pill">MySQL</span>
               </div>
             </div>
 
             <div className="skills-category">
               <h3>AI & Agents</h3>
               <div className="skills-list">
-                <span className="skill-pill">Claude API</span>
-                <span className="skill-pill">AI agent architecture</span>
-                <span className="skill-pill">Agentic workflows</span>
-                <span className="skill-pill">System Prompt Engineering</span>
-                <span className="skill-pill">RAG</span>
-                <span className="skill-pill">MCP servers</span>
-                <span className="skill-pill">Twilio SMS/voice integration</span>
-              </div>
-            </div>
-
-            <div className="skills-category">
-              <h3>Databases</h3>
-              <div className="skills-list">
-                <span className="skill-pill">Supabase</span>
-                <span className="skill-pill">MySQL</span>
-                <span className="skill-pill">MSSQL</span>
-              </div>
-            </div>
-
-            <div className="skills-category">
-              <h3>Platforms & CMS</h3>
-              <div className="skills-list">
-                <span className="skill-pill">Vercel</span>
-                <span className="skill-pill">Twilio</span>
-                <span className="skill-pill">Cal.com</span>
-                <span className="skill-pill">WordPress</span>
-                <span className="skill-pill">Framer</span>
-                <span className="skill-pill">Squarespace</span>
-              </div>
-            </div>
-
-            <div className="skills-category">
-              <h3>Automation & Integrations</h3>
-              <div className="skills-list">
-                <span className="skill-pill">Zapier</span>
-                <span className="skill-pill">API integrations</span>
-                <span className="skill-pill">Webhooks</span>
-                <span className="skill-pill">Google Apps Script</span>
-              </div>
-            </div>
-
-            <div className="skills-category">
-              <h3>Tools</h3>
-              <div className="skills-list">
-                <span className="skill-pill">Git</span>
-                <span className="skill-pill">GitHub</span>
-                <span className="skill-pill">VS Code</span>
-                <span className="skill-pill">Claude Code</span>
                 <span className="skill-pill">Claude Co-Work</span>
                 <span className="skill-pill">Codex</span>
-                <span className="skill-pill">Google AI Studio</span>
-                <span className="skill-pill">Postman</span>
-                <span className="skill-pill">Figma</span>
+                <span className="skill-pill">Agentic workflows</span>
+                <span className="skill-pill">RAG</span>
+                <span className="skill-pill">MCP servers</span>
               </div>
             </div>
 
             <div className="skills-category">
-              <h3>Analytics & Tracking</h3>
+              <h3>Platforms</h3>
               <div className="skills-list">
-                <span className="skill-pill">Google Analytics 4</span>
-                <span className="skill-pill">Google Search Console</span>
-                <span className="skill-pill">Microsoft Clarity</span>
-                <span className="skill-pill">schema.org structured data</span>
+                <span className="skill-pill">Twilio</span>
+                <span className="skill-pill">Stripe</span>
+                <span className="skill-pill">Cal.com</span>
+                <span className="skill-pill">Zapier</span>
+                <span className="skill-pill">Vercel</span>
+              </div>
+            </div>
+
+            <div className="skills-category">
+              <h3>Tooling</h3>
+              <div className="skills-list">
+                <span className="skill-pill">Git/GitHub</span>
+                <span className="skill-pill">VS Code</span>
+                <span className="skill-pill">Claude Code</span>
+                <span className="skill-pill">Postman</span>
               </div>
             </div>
           </div>
