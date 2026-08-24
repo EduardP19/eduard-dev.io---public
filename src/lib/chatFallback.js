@@ -2,27 +2,27 @@ const FALLBACK_RESPONSES = [
   {
     patterns: ['skill', 'stack', 'technology', 'tech'],
     answer:
-      "Eduard works with JavaScript, TypeScript, React, Next.js, HTML, CSS, Supabase, REST APIs, webhooks, Gemini 2.5 Pro, Twilio infrastructure, iCal.eu booking flows, WordPress, and automation tools like Zapier and Google Apps Script.",
+      "Eduard works with JavaScript, TypeScript, Python, React, Next.js, Node.js, Supabase (PostgreSQL), MySQL, REST APIs, webhooks, the Claude API, agentic workflows, MCP servers, Twilio, Stripe, Cal.com, Vercel, and automation tools like Zapier and Google Apps Script.",
   },
   {
     patterns: ['project', 'portfolio', 'work', 'built'],
     answer:
-      'Recent work includes a lead-generation and automation platform, a hospitality booking system, multiple client websites, and production integrations connecting web apps with third-party APIs.',
+      'Recent work includes a lead-generation and automation platform serving 10k+ monthly users, Resevia (an AI reception agent that recovers missed calls over SMS), a hospitality booking system, a gift card platform, and production integrations connecting web apps with CRM and third-party APIs.',
   },
   {
     patterns: ['hire', 'available', 'role', 'job'],
     answer:
-      "Eduard is open to full-stack developer opportunities and can contribute across frontend work, API integrations, and automation-heavy features. You can reach him via the contact section on this page.",
+      "Eduard is open to developer roles and can contribute across frontend work, API integrations, AI agents, and automation-heavy features. You can reach him via the contact section on this page.",
   },
   {
     patterns: ['contact', 'email', 'linkedin', 'cv', 'resume'],
     answer:
-      'Use the contact section to email Eduard directly or connect on LinkedIn. You can also download his CV from the hero section.',
+      'Use the contact section to email Eduard directly or connect on LinkedIn, and he can send his CV across on request.',
   },
   {
     patterns: ['ai', 'chatbot', 'assistant', 'gemini', 'automation'],
     answer:
-      'This chat assistant demonstrates Eduard’s AI integration direction. It can run through a Gemini-backed server endpoint using the portfolio prompt and project data.',
+      'This chat assistant demonstrates Eduard’s AI integration work. It runs through a server-side endpoint using the portfolio system prompt and live project data. His product work also uses the Claude API for agent workflows.',
   },
 ]
 

@@ -6,6 +6,8 @@ import { getPublishedProjects } from './lib/projects'
 
 const GITHUB_URL = 'https://github.com/EduardP19'
 const CV_URL = 'https://drive.google.com/file/d/1XUSJhjl18eZeAD0b0ci4I0BmOkL5394K/view?usp=sharing'
+// Toggle back to true to bring the CV download button back into the hero.
+const SHOW_CV_BUTTON = false
 
 const trackClick = (label) => {
   window.gtag('event', 'cta_click', {
@@ -247,14 +249,17 @@ function App() {
             ) : <span className="hero-label">Hi, I'm Eduard</span>}
             <h1>AI Software Engineer</h1>
             <p>
-              I build fast, conversion-focused web products using JavaScript/TypeScript, React,
-              Next.js, APIs, AI Agents, and Automations across custom builds and WordPress.
+              I build automation-driven web platforms and AI agents with JavaScript/TypeScript,
+              React, Next.js, and Supabase — production systems handling 10k+ monthly users,
+              250+ daily API requests, and CRM and third-party integrations.
               Available for developer roles.
             </p>
             <div className="hero-buttons">
               <a href="#projects" className="btn btn-primary" onClick={() => trackClick('View My Work')}>View My Work</a>
               <div className="button-cluster">
-                <a href={CV_URL} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" onClick={() => trackClick('Download My CV')}>Download My CV</a>
+                {SHOW_CV_BUTTON && (
+                  <a href={CV_URL} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" onClick={() => trackClick('Download My CV')}>Download My CV</a>
+                )}
                 <a
                   href={GITHUB_URL}
                   target="_blank"
@@ -297,7 +302,7 @@ function App() {
                 <span className="skill-pill">TypeScript</span>
                 <span className="skill-pill">HTML</span>
                 <span className="skill-pill">CSS</span>
-                <span className="skill-pill">Python (working knowledge)</span>
+                <span className="skill-pill">Python</span>
               </div>
             </div>
 
@@ -319,6 +324,7 @@ function App() {
                 <span className="skill-pill">Supabase (PostgreSQL)</span>
                 <span className="skill-pill">REST APIs</span>
                 <span className="skill-pill">Webhooks</span>
+                <span className="skill-pill">Cal.com API</span>
                 <span className="skill-pill">Google Calendar API</span>
                 <span className="skill-pill">Stripe API</span>
               </div>
@@ -327,8 +333,11 @@ function App() {
             <div className="skills-category">
               <h3>AI & Agents</h3>
               <div className="skills-list">
+                <span className="skill-pill">Claude API</span>
                 <span className="skill-pill">AI agent architecture</span>
+                <span className="skill-pill">Agentic workflows</span>
                 <span className="skill-pill">System Prompt Engineering</span>
+                <span className="skill-pill">RAG</span>
                 <span className="skill-pill">MCP servers</span>
                 <span className="skill-pill">Twilio SMS/voice integration</span>
               </div>
@@ -347,6 +356,8 @@ function App() {
               <h3>Platforms & CMS</h3>
               <div className="skills-list">
                 <span className="skill-pill">Vercel</span>
+                <span className="skill-pill">Twilio</span>
+                <span className="skill-pill">Cal.com</span>
                 <span className="skill-pill">WordPress</span>
                 <span className="skill-pill">Framer</span>
                 <span className="skill-pill">Squarespace</span>
@@ -370,6 +381,7 @@ function App() {
                 <span className="skill-pill">GitHub</span>
                 <span className="skill-pill">VS Code</span>
                 <span className="skill-pill">Claude Code</span>
+                <span className="skill-pill">Claude Co-Work</span>
                 <span className="skill-pill">Codex</span>
                 <span className="skill-pill">Google AI Studio</span>
                 <span className="skill-pill">Postman</span>
@@ -396,23 +408,26 @@ function App() {
           <div className="about-text">
             <h2>About Me.</h2>
             <p>
-              I'm a developer with hands-on experience building AI-powered products,
-              client websites, and automation-led digital systems. My work sits across frontend
-              development, API integrations, and practical solutions that help businesses operate
-              more efficiently.
+              I'm a developer with 2+ years building automation-driven web platforms and API
+              integrations. Day to day I work on production systems serving 10k+ monthly users
+              and 50+ daily leads, spanning frontend work, backend workflows, CRM and
+              third-party integrations, and the deployment pipeline that ships it all.
             </p>
             <p>
-              My strongest recent project is Resevia, an AI-powered reception agent for beauty
-              salons built with Next.js, Supabase, Gemini 2.5 Pro, and iCal.eu booking flows.
-              Twilio infrastructure is in place and currently moving through go-live rollout. It
-              pushed me beyond UI work into system design, prompt engineering, integration
-              architecture, and shipping around a real business problem.
+              My strongest recent project is Resevia, an AI reception agent for beauty salons
+              that recovers missed calls over SMS — it checks live availability, books the
+              appointment, and sends reminders with no human input. It's built on Next.js,
+              Supabase, the Claude API, Twilio, and Cal.com, and is complete and in pre-launch
+              testing ahead of go-live. It pushed me beyond UI work into system design, prompt
+              engineering, integration architecture, and building around a real business problem.
             </p>
             <p>
-              Before that, through ezwebone.co.uk — my freelance brand — I delivered websites and CMS builds for small business
-              clients, including custom CMS work, Stripe integrations, and internal
-              documentation so non-technical teams could manage their sites confidently after
-              launch.
+              Alongside that I work part-time as a freelance web and automation developer through
+              ezwebone.co.uk — my freelance brand — with 10+ projects shipped end to
+              end across hospitality, events, e-commerce, and education. That includes a custom
+              booking system with dynamic pricing and payment processing, and a gift card platform
+              with secure code generation, validation, and rebalance logic. Those platforms now
+              process £100k+ in monthly bookings across 20k+ monthly visits.
             </p>
             <p>
               I'm now looking for a developer role where I can keep building,
