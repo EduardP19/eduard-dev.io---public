@@ -68,7 +68,7 @@ function Nav({ activeSection }) {
   return (
     <>
       <MotionHeader
-        className={`nav ${scrolled ? 'is-scrolled' : ''}`}
+        className={`nav ${scrolled ? 'is-scrolled' : ''} ${menuOpen ? 'is-menu-open' : ''}`}
         animate={{ y: hidden ? '-110%' : '0%' }}
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       >

@@ -2586,6 +2586,109 @@ html.has-custom-cursor [role='button'] {
   font-size: 11px;
 }
 
+/* --- Mobile refinements -------------------------------------------------- */
+
+/* Nav sits on top of the lime menu overlay — flip it to dark ink. */
+.nav.is-menu-open .nav-inner {
+  background: transparent;
+  border-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.nav.is-menu-open .nav-logo-mark {
+  background: var(--accent-ink);
+  color: var(--accent);
+}
+
+.nav.is-menu-open .nav-logo-text,
+.nav.is-menu-open .nav-logo-text .accent {
+  color: var(--accent-ink);
+}
+
+.nav.is-menu-open .caret {
+  background: var(--accent-ink);
+}
+
+.nav.is-menu-open .nav-burger {
+  background: var(--accent-ink);
+  border-color: var(--accent-ink);
+}
+
+.nav.is-menu-open .nav-burger span {
+  background: var(--accent);
+}
+
+/* Bigger tap targets for small text buttons. */
+.terminal-reset,
+.footer-top {
+  min-height: 44px;
+  padding: 0 8px;
+}
+
+.terminal-reset {
+  margin-right: -8px;
+}
+
+.nav-logo {
+  min-height: 44px;
+}
+
+@media (max-width: 719px) {
+  /* iOS zooms into inputs under 16px — keep them at 16. */
+  .chat-input {
+    font-size: 16px;
+  }
+
+  .terminal-title-extra {
+    display: none;
+  }
+
+  /* Compact round chat button so it doesn't cover content. */
+  .chat-toggle {
+    width: 56px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .chat-toggle-label {
+    display: none;
+  }
+
+  .chat-widget-root {
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .stat-value {
+    font-size: clamp(40px, 12vw, 56px);
+  }
+
+  .stat-label {
+    font-size: 13px;
+  }
+
+  .chat-messages {
+    padding: 16px;
+  }
+
+  .chat-suggestions {
+    padding: 0 16px 12px;
+  }
+
+  .chat-message {
+    max-width: 94%;
+  }
+
+  .work-outro {
+    min-height: 280px;
+  }
+
+  .contact-title {
+    margin-bottom: 40px;
+  }
+}
+
 /* --- Reduced motion ------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

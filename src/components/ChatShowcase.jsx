@@ -60,7 +60,9 @@ function ChatShowcase() {
               <i />
               <i />
             </span>
-            <span className="mono dim">eduard.ai — live session</span>
+            <span className="mono dim terminal-title">
+              eduard.ai<span className="terminal-title-extra"> — live session</span>
+            </span>
             <button
               type="button"
               className="terminal-reset mono"
