@@ -10,12 +10,27 @@ A personal portfolio site built to demonstrate real-world frontend skills, AI in
 |---|---|
 | Framework | React 19 (Vite 5) |
 | Styling | Custom CSS with CSS variables |
-| Animation | Framer Motion |
+| Animation | Framer Motion, Lenis smooth scroll, custom WebGL shader |
 | Database | Supabase (PostgreSQL) |
 | AI Backend | Google Gemini 2.5 Flash (via server-side API) |
 | Analytics | Google Analytics 4 (react-ga4), Supabase session logging |
 | Icons | Lucide React |
 | Deployment | Vercel (serverless functions + static frontend) |
+
+---
+
+## Interaction Design
+
+The site is built to feel like a premium product, not a template:
+
+- **WebGL hero** — a hand-written domain-warped noise shader (`ShaderBackground.jsx`) that bends toward the cursor, pauses off-screen and falls back to CSS when WebGL is unavailable
+- **Preloader + masked line reveals** — counter-driven intro curtain, then headline lines slide out of clipped masks with a scrambling role word
+- **Pinned horizontal gallery** — on desktop, vertical scroll drives a sticky horizontal project track; mobile gets a stacked layout
+- **Case-study modal** — 3D tilt + spotlight cards open a portal dialog with a drag / arrow-key before-after slider
+- **Velocity marquee** — tech ticker whose speed and direction follow scroll velocity
+- **Scroll-read About** — each word lights up as it scrolls through, next to a self-drawing experience timeline
+- **Command palette** — `⌘K` / `Ctrl+K` for keyboard navigation and quick actions
+- **Custom cursor + magnetic buttons** — only on fine pointers; everything respects `prefers-reduced-motion`
 
 ---
 

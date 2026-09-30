@@ -8,5 +8,17 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), viteChatApiPlugin()],
+    build: {
+      rollupOptions: {
+        output: {
+          // Split heavy vendors so the app shell caches independently.
+          manualChunks: {
+            react: ['react', 'react-dom'],
+            motion: ['framer-motion', 'lenis'],
+            supabase: ['@supabase/supabase-js'],
+          },
+        },
+      },
+    },
   }
 })

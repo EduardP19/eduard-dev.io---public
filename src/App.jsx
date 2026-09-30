@@ -1,435 +1,141 @@
-import { useState, useEffect, useRef } from 'react'
-import ChatInterface from './components/ChatInterface'
-import ChatWidget from './components/ChatWidget'
+import { useCallback, useEffect, useState } from 'react'
+import { motion, useScroll, useSpring } from 'framer-motion'
+import Preloader from './components/Preloader'
+import Cursor from './components/Cursor'
+import Nav from './components/Nav'
+import Hero from './components/Hero'
+import VelocityMarquee from './components/VelocityMarquee'
+import Stats from './components/Stats'
 import ProjectsSection from './components/ProjectsSection'
+import Skills from './components/Skills'
+import ChatShowcase from './components/ChatShowcase'
+import About from './components/About'
+import Contact from './components/Contact'
+import ChatWidget from './components/ChatWidget'
+import CommandPalette from './components/CommandPalette'
+import { useSmoothScroll } from './hooks/useSmoothScroll'
 import { getPublishedProjects } from './lib/projects'
+import { NAV_LINKS, STACK_ROW_ONE, STACK_ROW_TWO } from './lib/site'
+import { trackClick } from './lib/track'
 
-const GITHUB_URL = 'https://github.com/EduardP19'
-const CV_URL = 'https://drive.google.com/file/d/1XUSJhjl18eZeAD0b0ci4I0BmOkL5394K/view?usp=sharing'
-// Toggle back to true to bring the CV download button back into the hero.
-const SHOW_CV_BUTTON = false
-
-const trackClick = (label) => {
-  window.gtag('event', 'cta_click', {
-    cta_name: label,
-    page_path: window.location.pathname,
-  });
-};
-
-const GitHubMark = () => (
-  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-    <path
-      fill="currentColor"
-      d="M12 .5C5.649.5.5 5.649.5 12c0 5.086 3.292 9.404 7.86 10.926.574.105.784-.25.784-.556 0-.274-.01-1-.015-1.962-3.198.695-3.872-1.54-3.872-1.54-.523-1.327-1.277-1.68-1.277-1.68-1.043-.712.079-.698.079-.698 1.153.08 1.76 1.183 1.76 1.183 1.024 1.757 2.689 1.25 3.344.958.104-.744.402-1.251.73-1.538-2.553-.29-5.238-1.276-5.238-5.685 0-1.257.449-2.286 1.184-3.091-.119-.29-.513-1.456.112-3.037 0 0 .965-.31 3.162 1.18A10.97 10.97 0 0 1 12 6.319c.975.005 1.956.132 2.872.387 2.194-1.49 3.158-1.18 3.158-1.18.624 1.581.23 2.747.112 3.037.736.805 1.183 1.834 1.183 3.09 0 4.42-2.689 5.393-5.252 5.678.413.355.78 1.054.78 2.125 0 1.536-.014 2.775-.014 3.152 0 .308.207.667.79.554A11.505 11.505 0 0 0 23.5 12C23.5 5.649 18.351.5 12 .5Z"
-    />
-  </svg>
-)
+const MotionDiv = motion.div
 
 const PARAM_KEYS = [
-  "UTM_NAME",
-  "UTM_COMPANY",
-  "UTM_INDUSTRY",
-  "UTM_SOURCE",
-  "UTM_MEDIUM",
-  "UTM_CAMPAIGN",
-  "UTM_TERM",
-  "UTM_CONTENT"
-];
+  'UTM_NAME',
+  'UTM_COMPANY',
+  'UTM_INDUSTRY',
+  'UTM_SOURCE',
+  'UTM_MEDIUM',
+  'UTM_CAMPAIGN',
+  'UTM_TERM',
+  'UTM_CONTENT',
+]
 
-function App() {
-  const searchParams =
-    typeof window === 'undefined' ? null : new URLSearchParams(window.location.search)
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hrName] = useState(searchParams?.get('UTM_NAME') ?? null);
-  const [projects, setProjects] = useState([]);
-  const [projectsError, setProjectsError] = useState(null);
+// Highlights the nav link for whichever section owns the middle of the screen.
+function useActiveSection() {
+  const [active, setActive] = useState('')
 
   useEffect(() => {
-    const sp = new URLSearchParams(window.location.search);
-
-    PARAM_KEYS.forEach((key) => {
-      const value = sp.get(key);
-
-      // store only if it exists
-      if (value) {
-        localStorage.setItem(key, value);
-      }
-    });
-  }, []);
-
-  useEffect(() => {
-    if (!import.meta.env.DEV) {
-      return undefined;
-    }
-
-    document.body.classList.add('dev-performance-mode');
-
-    return () => {
-      document.body.classList.remove('dev-performance-mode');
-    };
-  }, []);
-
-  useEffect(() => {
-    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const shouldEnableCustomCursor =
-      import.meta.env.PROD && isFinePointer && !prefersReducedMotion;
-
-    if (!shouldEnableCustomCursor) {
-      document.body.classList.remove('custom-cursor-enabled');
-      return;
-    }
-
-    document.body.classList.add('custom-cursor-enabled');
-
-    const cursor = document.createElement("div");
-    cursor.classList.add("custom-cursor");
-    document.body.appendChild(cursor);
-
-    // Use requestAnimationFrame for smoother visual updates
-    let mouseX = 0;
-    let mouseY = 0;
-    let isMoving = false;
-    const CLICKABLE_SELECTOR =
-      'a, button, .portfolio-card, .portfolio-dialog-close, .skill-pill';
-
-    const moveCursor = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
-      if (!isMoving) {
-        isMoving = true;
-        requestAnimationFrame(updateCursorPosition);
-      }
-    };
-
-    const updateCursorPosition = () => {
-      // Simple linear interpolation (lerp) for smoother follow, or direct assignment for instant
-      // For "laggy" complaints, direct assignment is often better unless they want a "trailing" effect.
-      // Let's stick to direct assignment but inside rAF to sync with refresh rate.
-      cursor.style.left = `${mouseX}px`;
-      cursor.style.top = `${mouseY}px`;
-      isMoving = false;
-    };
-
-    const addHoverClass = () => cursor.classList.add("hovered");
-    const removeHoverClass = () => cursor.classList.remove("hovered");
-
-    const handleMouseOut = (e) => {
-      if (!e.relatedTarget || !e.relatedTarget.closest(CLICKABLE_SELECTOR)) {
-        removeHoverClass();
-      }
-    };
-
-    // Optimized delegation for hover effects
-    const handleHover = (e) => {
-      // Check if target or any parent is clickable
-      const clickable = e.target.closest(CLICKABLE_SELECTOR);
-      if (clickable) {
-        addHoverClass();
-      } else {
-        removeHoverClass();
-      }
-    };
-
-    window.addEventListener("mousemove", moveCursor, { passive: true });
-    document.addEventListener('mouseover', handleHover);
-    document.addEventListener('mouseout', handleMouseOut);
-
-    return () => {
-      window.removeEventListener("mousemove", moveCursor);
-      document.removeEventListener('mouseover', handleHover);
-      document.removeEventListener('mouseout', handleMouseOut);
-      if (document.body.contains(cursor)) {
-        document.body.removeChild(cursor);
-      }
-      document.body.classList.remove('custom-cursor-enabled');
-    };
-  }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setIsMenuOpen(false)
-      }
-    }
-
-    window.addEventListener('resize', handleResize, { passive: true })
-    return () => window.removeEventListener('resize', handleResize)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => entry.isIntersecting && setActive(entry.target.id))
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    )
+    NAV_LINKS.forEach(({ id }) => {
+      const element = document.getElementById(id)
+      if (element) observer.observe(element)
+    })
+    return () => observer.disconnect()
   }, [])
 
-  const videoRef = useRef(null);
+  return active
+}
 
+function App() {
+  const [hrName] = useState(() =>
+    typeof window === 'undefined' ? null : new URLSearchParams(window.location.search).get('UTM_NAME'),
+  )
+  const [ready, setReady] = useState(false)
+  const [projects, setProjects] = useState([])
+  const [projectsError, setProjectsError] = useState(null)
+  const activeSection = useActiveSection()
+  const { scrollYProgress } = useScroll()
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.3 })
+
+  useSmoothScroll()
+
+  const handlePreloaderDone = useCallback(() => setReady(true), [])
+
+  // Persist recruiter UTM params so the logger can attribute later events.
   useEffect(() => {
-    // Force video to play to ensure autoplay works
-    if (videoRef.current) {
-      videoRef.current.play().catch(error => {
-        console.log("Video autoplay failed:", error);
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const loadProjects = async () => {
-      try {
-        const publishedProjects = await getPublishedProjects();
-        if (isMounted) {
-          setProjects(publishedProjects);
-          setProjectsError(null);
+    const params = new URLSearchParams(window.location.search)
+    PARAM_KEYS.forEach((key) => {
+      const value = params.get(key)
+      if (value) {
+        try {
+          localStorage.setItem(key, value)
+        } catch {
+          // Storage can be blocked in private mode — attribution is best effort.
         }
-      } catch (error) {
-        if (isMounted) {
-          setProjectsError('Could not load projects from Supabase. Showing fallback projects.');
-        }
-        console.error('Projects loading failed:', error);
       }
-    };
+    })
+  }, [])
 
-    loadProjects();
+  useEffect(() => {
+    let isMounted = true
+
+    getPublishedProjects()
+      .then((published) => {
+        if (!isMounted) return
+        setProjects(published)
+        setProjectsError(null)
+      })
+      .catch((error) => {
+        if (isMounted) {
+          setProjectsError('Could not load projects from Supabase. Showing fallback projects.')
+        }
+        console.error('Projects loading failed:', error)
+      })
 
     return () => {
-      isMounted = false;
-    };
-  }, []);
+      isMounted = false
+    }
+  }, [])
+
+  // Keep the page pinned to the top while the intro curtain is down.
+  useEffect(() => {
+    if (ready) {
+      window.__lenis?.start()
+      document.documentElement.classList.remove('is-loading')
+      return
+    }
+    window.__lenis?.stop()
+    document.documentElement.classList.add('is-loading')
+  }, [ready])
 
   return (
     <div className="app">
-      {/* Navigation */}
-      <nav className="navbar">
-        <div className="container nav-container">
-          <div className="logo">E<span className="dot"></span>P<span className="dot"></span></div>
-          <button
-            className="menu-toggle"
-            onClick={toggleMenu}
-            aria-expanded={isMenuOpen}
-            aria-controls="primary-nav"
-            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          >
-            {isMenuOpen ? '✕' : '☰'}
-          </button>
-          <ul id="primary-nav" className={`nav-links ${isMenuOpen ? 'active' : ''}`} >
-            <li><a href="#hero" onClick={() => setIsMenuOpen(false)}>Home</a></li>
-            <li><a href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</a></li>
-            <li><a href="#chat" onClick={() => setIsMenuOpen(false)}>Chat</a></li>
-            <li><a href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</a></li>
-            <li><a href="#about" onClick={() => setIsMenuOpen(false)}>About</a></li>
-            <li><a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
-          </ul>
-        </div>
-      </nav>
+      <Preloader onDone={handlePreloaderDone} />
+      <Cursor />
+      <MotionDiv className="scroll-progress" style={{ scaleX: progress }} aria-hidden="true" />
+      <div className="grain" aria-hidden="true" />
 
-      {/* Hero Section */}
-      <section id="hero" className="section hero-section">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          id="background-video"
-          preload="metadata"
-        >
-          <source src="https://video.wixstatic.com/video/11062b_b02d1b7883d5447fb2453acb93a5102b/1080p/mp4/file.mp4" type="video/mp4" />
-        </video>
-        <div className="container hero-content">
-          <div className="hero-copy">
-            {hrName ? (
-              <div style={{ marginBottom: "0.5rem" }}>
-                <span className="hero-label-name">
-                  Hello {hrName}
-                </span>
-                <div><span className="hero-label">I'm Eduard</span></div>
-              </div>
-            ) : <span className="hero-label">Hi, I'm Eduard</span>}
-            <h1>AI Software Engineer</h1>
-            <p>
-              I build automation-driven web platforms and AI agents with JavaScript/TypeScript,
-              React, Next.js, and Supabase — production systems handling 10k+ monthly users,
-              250+ daily API requests, and CRM and third-party integrations.
-              Available for developer roles.
-            </p>
-            <div className="hero-buttons">
-              <a href="#projects" className="btn btn-primary" onClick={() => trackClick('View My Work')}>View My Work</a>
-              <div className="button-cluster">
-                {SHOW_CV_BUTTON && (
-                  <a href={CV_URL} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" onClick={() => trackClick('Download My CV')}>Download My CV</a>
-                )}
-                <a
-                  href={GITHUB_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-secondary btn-icon"
-                  aria-label="View GitHub profile"
-                  title="View GitHub profile"
-                  onClick={() => trackClick('View GitHub Hero')}
-                >
-                  <GitHubMark />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div id="chat" className="hero-chat">
-            <p className="hero-chat-kicker">Ask My AI</p>
-            <ChatInterface />
-          </div>
-        </div>
-      </section>
+      <Nav activeSection={activeSection} />
 
-      <ProjectsSection projects={projects} projectsError={projectsError} trackClick={trackClick} />
+      <main>
+        <Hero ready={ready} hrName={hrName} />
+        <VelocityMarquee rows={[STACK_ROW_ONE, STACK_ROW_TWO]} />
+        <Stats />
+        <ProjectsSection projects={projects} projectsError={projectsError} trackClick={trackClick} />
+        <Skills />
+        <ChatShowcase />
+        <About />
+      </main>
 
-      {/* Skills Section */}
-      <section id="skills" className="section skills-section">
-        <div className="container skills-container">
-          <div className="skills-intro">
-            <h2>Technical Skills</h2>
-            <p>
-              Here’s the stack I’m currently using across AI-powered web applications, client
-              builds, and automation-led systems.
-            </p>
-            <a href="#contact" className="btn btn-primary" onClick={() => trackClick('Let\'s Talk')}>Let's Talk</a>
-          </div>
-          <div className="skills-grid">
-            <div className="skills-category">
-              <h3>Languages</h3>
-              <div className="skills-list">
-                <span className="skill-pill">JavaScript</span>
-                <span className="skill-pill">TypeScript</span>
-                <span className="skill-pill">Python</span>
-              </div>
-            </div>
-
-            <div className="skills-category">
-              <h3>Frontend</h3>
-              <div className="skills-list">
-                <span className="skill-pill">React</span>
-                <span className="skill-pill">Next.js</span>
-                <span className="skill-pill">Tailwind CSS</span>
-              </div>
-            </div>
-
-            <div className="skills-category">
-              <h3>Backend & Data</h3>
-              <div className="skills-list">
-                <span className="skill-pill">Node.js</span>
-                <span className="skill-pill">REST APIs</span>
-                <span className="skill-pill">Webhooks</span>
-                <span className="skill-pill">Supabase (PostgreSQL)</span>
-                <span className="skill-pill">MySQL</span>
-              </div>
-            </div>
-
-            <div className="skills-category">
-              <h3>AI & Agents</h3>
-              <div className="skills-list">
-                <span className="skill-pill">Claude Co-Work</span>
-                <span className="skill-pill">Codex</span>
-                <span className="skill-pill">Agentic workflows</span>
-                <span className="skill-pill">RAG</span>
-                <span className="skill-pill">MCP servers</span>
-              </div>
-            </div>
-
-            <div className="skills-category">
-              <h3>Platforms</h3>
-              <div className="skills-list">
-                <span className="skill-pill">Twilio</span>
-                <span className="skill-pill">Stripe</span>
-                <span className="skill-pill">Cal.com</span>
-                <span className="skill-pill">Zapier</span>
-                <span className="skill-pill">Vercel</span>
-              </div>
-            </div>
-
-            <div className="skills-category">
-              <h3>Tooling</h3>
-              <div className="skills-list">
-                <span className="skill-pill">Git/GitHub</span>
-                <span className="skill-pill">VS Code</span>
-                <span className="skill-pill">Claude Code</span>
-                <span className="skill-pill">Postman</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="section about-section">
-        <div className="container about-container">
-          <div className="about-text">
-            <h2>About Me.</h2>
-            <p>
-              I'm a developer with 2+ years building automation-driven web platforms and API
-              integrations. Day to day I work on production systems serving 10k+ monthly users
-              and 50+ daily leads, spanning frontend work, backend workflows, CRM and
-              third-party integrations, and the deployment pipeline that ships it all.
-            </p>
-            <p>
-              My strongest recent project is Resevia, an AI reception agent for beauty salons
-              that recovers missed calls over SMS — it checks live availability, books the
-              appointment, and sends reminders with no human input. It's built on Next.js,
-              Supabase, the Claude API, Twilio, and Cal.com, and is complete and in pre-launch
-              testing ahead of go-live. It pushed me beyond UI work into system design, prompt
-              engineering, integration architecture, and building around a real business problem.
-            </p>
-            <p>
-              Alongside that I work part-time as a freelance web and automation developer through
-              ezwebone.co.uk — my freelance brand — with 10+ projects shipped end to
-              end across hospitality, events, e-commerce, and education. That includes a custom
-              booking system with dynamic pricing and payment processing, and a gift card platform
-              with secure code generation, validation, and rebalance logic. Those platforms now
-              process £100k+ in monthly bookings across 20k+ monthly visits.
-            </p>
-            <p>
-              I'm now looking for a developer role where I can keep building,
-              learn from experienced engineers, and contribute to a team working on meaningful
-              products, especially where AI is part of the workflow or product itself.
-            </p>
-          </div>
-          {/* <div className="about-image">
-            <div className="about-image-placeholder"></div>
-          </div> */}
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="section contact-section">
-        <div className="container">
-          <h2>Let's Work Together</h2>
-          <p>
-            I'm currently available for developer roles. If you're looking for someone who is eager to learn and ready to contribute, I'd love to hear from you.
-          </p>
-          <div className="contact-links">
-            <a href="mailto:eduard.proca93@gmail.com" className="btn btn-primary" onClick={() => trackClick('Email Me')}>Email Me</a>
-            <a href="https://www.linkedin.com/in/eduard-p-34a06b232" target="_blank" rel="noopener noreferrer" className="btn btn-secondary" onClick={() => trackClick('Connect on LinkedIn')}>Connect on LinkedIn</a>
-            <a
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-secondary btn-icon"
-              aria-label="View GitHub profile"
-              title="View GitHub profile"
-              onClick={() => trackClick('View GitHub Contact')}
-            >
-              <GitHubMark />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <p>&copy; {new Date().getFullYear()} Eduard P. All rights reserved.</p>
-        </div>
-      </footer>
+      <Contact />
       <ChatWidget />
+      <CommandPalette />
     </div>
   )
 }
