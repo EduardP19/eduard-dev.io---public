@@ -1078,12 +1078,20 @@ html.has-custom-cursor [role='button'] {
 
 .work-pin {
   position: relative;
+  /* svh keeps the pin steady while mobile browser bars show/hide. */
+  --pin-vh: 100vh;
+}
+
+@supports (height: 100svh) {
+  .work-pin {
+    --pin-vh: 100svh;
+  }
 }
 
 .work-sticky {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: var(--pin-vh);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -2587,6 +2595,53 @@ html.has-custom-cursor [role='button'] {
 }
 
 /* --- Mobile refinements -------------------------------------------------- */
+
+/* Horizontal project gallery sized for phones and tablets. */
+@media (max-width: 1023px) {
+  .work-track {
+    gap: 16px;
+    align-items: stretch;
+    max-height: calc(var(--pin-vh) - 150px);
+  }
+
+  .work-track .work-intro {
+    width: min(74vw, 460px);
+    padding-right: 8px;
+  }
+
+  .work-track .project-card {
+    width: min(82vw, 440px);
+  }
+
+  .work-track .work-outro {
+    width: min(78vw, 380px);
+    min-height: 0;
+    align-self: stretch;
+  }
+
+  .work-intro p {
+    font-size: 16px;
+  }
+
+  .work-progress {
+    bottom: max(24px, env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-height: 700px) and (max-width: 1023px) {
+  .work-track .project-media {
+    aspect-ratio: 16 / 8;
+  }
+
+  .work-track .project-body {
+    padding: 18px;
+    gap: 8px;
+  }
+
+  .work-track .project-body p {
+    -webkit-line-clamp: 2;
+  }
+}
 
 /* Nav sits on top of the lime menu overlay — flip it to dark ink. */
 .nav.is-menu-open .nav-inner {

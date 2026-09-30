@@ -61,14 +61,18 @@ function Outro() {
   )
 }
 
-// Desktop: vertical scroll drives a pinned horizontal gallery.
+// Vertical scroll drives a pinned horizontal gallery (desktop and mobile).
 function HorizontalGallery({ projects, trackClick }) {
   const sectionRef = useRef(null)
   const trackRef = useRef(null)
   const [distance, setDistance] = useState(0)
   const distanceValue = useMotionValue(0)
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end end'] })
-  const x = useTransform([scrollYProgress, distanceValue], ([progress, d]) => -progress * d)
+  // Hold still for the first and last 6% of the pin so the intro and final card rest in view.
+  const x = useTransform([scrollYProgress, distanceValue], ([progress, d]) => {
+    const t = Math.min(1, Math.max(0, (progress - 0.06) / 0.88))
+    return -t * d
+  })
 
   useEffect(() => {
     const track = trackRef.current
@@ -88,7 +92,7 @@ function HorizontalGallery({ projects, trackClick }) {
   }, [distanceValue, projects.length])
 
   return (
-    <div ref={sectionRef} className="work-pin" style={{ height: `calc(${distance}px + 100vh)` }}>
+    <div ref={sectionRef} className="work-pin" style={{ height: `calc(${distance}px + var(--pin-vh))` }}>
       <div className="work-sticky">
         <MotionDiv ref={trackRef} className="work-track" style={{ x }}>
           <Intro count={projects.length} />
@@ -105,7 +109,8 @@ function HorizontalGallery({ projects, trackClick }) {
 
 function ProjectsSection({ projects, projectsError, trackClick }) {
   const safeProjects = useMemo(() => (Array.isArray(projects) ? projects : []), [projects])
-  const isDesktop = useMediaQuery('(min-width: 1024px) and (prefers-reduced-motion: no-preference)')
+  // Pinned horizontal gallery on every screen size; stacked list only for reduced motion.
+  const useGallery = useMediaQuery('(prefers-reduced-motion: no-preference)')
 
   return (
     <section id="work" className="work" aria-label="Selected projects">
@@ -118,7 +123,7 @@ function ProjectsSection({ projects, projectsError, trackClick }) {
           <Intro count={0} />
           <div className="work-skeleton" />
         </div>
-      ) : isDesktop ? (
+      ) : useGallery ? (
         <HorizontalGallery projects={safeProjects} trackClick={trackClick} />
       ) : (
         <div className="container work-stack">
