@@ -55,7 +55,7 @@ function Hero({ ready, hrName }) {
           <span className="tag">
             <span className="pulse-dot" /> Available for developer roles
           </span>
-          <span className="hero-meta mono">Hemel Hempstead, UK · Remote / Hybrid</span>
+          <span className="hero-meta mono">Remote / Hybrid</span>
         </MotionDiv>
 
         <h1 className="hero-title">
