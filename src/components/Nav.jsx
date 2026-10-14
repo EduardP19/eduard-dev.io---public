@@ -18,29 +18,11 @@ export function RollText({ children }) {
   )
 }
 
-function useLondonTime() {
-  const format = () =>
-    new Intl.DateTimeFormat('en-GB', {
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'Europe/London',
-    }).format(new Date())
-  const [time, setTime] = useState(format)
-
-  useEffect(() => {
-    const id = window.setInterval(() => setTime(format()), 15000)
-    return () => window.clearInterval(id)
-  }, [])
-
-  return time
-}
-
 function Nav({ activeSection }) {
   const { scrollY } = useScroll()
   const [hidden, setHidden] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const time = useLondonTime()
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     const previous = scrollY.getPrevious() ?? 0
@@ -94,9 +76,6 @@ function Nav({ activeSection }) {
           </ul>
 
           <div className="nav-actions">
-            <span className="nav-clock" title="Eduard's local time">
-              <span className="pulse-dot" /> UK {time}
-            </span>
             <button
               type="button"
               className="nav-kbd"
@@ -151,7 +130,7 @@ function Nav({ activeSection }) {
               ))}
             </ul>
             <p className="mobile-menu-foot">
-              <span className="pulse-dot" /> Available for developer roles · UK {time}
+              <span className="pulse-dot" /> Available for developer roles
             </p>
           </MotionDiv>
         ) : null}
