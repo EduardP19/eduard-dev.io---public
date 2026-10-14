@@ -2469,7 +2469,8 @@ html.has-custom-cursor [role='button'] {
 }
 
 .footer-wordmark {
-  font-size: clamp(64px, 19.5vw, 340px);
+  /* Rendered width is ~5.64em, so 17vw keeps it inside the viewport. */
+  font-size: min(17vw, 340px);
   font-weight: 600;
   letter-spacing: -0.07em;
   line-height: 0.78;
