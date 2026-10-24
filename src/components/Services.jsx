@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Bot, Globe, Workflow } from 'lucide-react'
-import { EMAIL, SERVICES } from '../lib/site'
+import { EMAIL, SERVICES, SERVICE_AREAS, areaPath } from '../lib/site'
 import { trackClick } from '../lib/track'
 
 const MotionDiv = motion.div
@@ -58,6 +58,16 @@ function Services() {
         >
           Start a project enquiry →
         </a>
+        <nav className="services-areas" aria-label="Areas covered">
+          <span className="mono dim">Working with businesses across</span>
+          <ul>
+            {SERVICE_AREAS.map((area) => (
+              <li key={area.slug}>
+                <a href={areaPath(area.slug)}>{area.name}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </section>
   )

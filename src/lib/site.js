@@ -138,3 +138,20 @@ export const SERVICES = [
     items: ['Website chat', 'Missed-call SMS', 'Booking agents', 'Claude & Gemini'],
   },
 ]
+
+// Local landing pages generated at build time (see seo/). Hub first.
+export const SITE_URL = 'https://www.eduard-dev.io'
+export const SERVICE_AREAS = [
+  { slug: 'hertfordshire', name: 'Hertfordshire' },
+  { slug: 'hemel-hempstead', name: 'Hemel Hempstead' },
+  { slug: 'watford', name: 'Watford' },
+  { slug: 'st-albans', name: 'St Albans' },
+  { slug: 'berkhamsted', name: 'Berkhamsted' },
+  { slug: 'harpenden', name: 'Harpenden' },
+  { slug: 'hatfield', name: 'Hatfield' },
+  { slug: 'welwyn-garden-city', name: 'Welwyn Garden City' },
+  { slug: 'stevenage', name: 'Stevenage' },
+  { slug: 'hitchin', name: 'Hitchin' },
+  { slug: 'letchworth-garden-city', name: 'Letchworth Garden City' },
+]
+export const areaPath = (slug) => `/web-design-${slug}`
