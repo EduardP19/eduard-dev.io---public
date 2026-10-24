@@ -1,19 +1,38 @@
 <!doctype html>
-<html lang="en" class="is-loading">
+<html lang="en-GB" class="is-loading">
 
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#07070a" />
-  <title>Eduard P. — AI Software Engineer</title>
+  <title>Eduard Proca — AI Software Engineer &amp; Web Developer, UK</title>
   <meta name="description"
-    content="Eduard builds AI agents, automation platforms and production web apps with React, Next.js, TypeScript and Supabase. Available for developer roles in the UK." />
-  <meta property="og:title" content="Eduard P. — AI Software Engineer" />
+    content="Portfolio of Eduard Proca, a UK AI software engineer building production web apps, AI agents and automation. Also available for freelance web design and business automation." />
+  <meta name="author" content="Eduard Proca" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://www.eduard-dev.io/" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:site_name" content="Eduard Proca" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:url" content="https://www.eduard-dev.io/" />
+  <meta property="og:title" content="Eduard Proca — AI Software Engineer &amp; Web Developer" />
   <meta property="og:description"
     content="AI agents, automation platforms and production web apps. Ask my AI anything about my work." />
-  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.eduard-dev.io/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Eduard Proca — AI Software Engineer" />
+  <meta property="profile:first_name" content="Eduard" />
+  <meta property="profile:last_name" content="Proca" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Eduard Proca — AI Software Engineer &amp; Web Developer" />
+  <meta name="twitter:description"
+    content="AI agents, automation platforms and production web apps. Ask my AI anything about my work." />
+  <meta name="twitter:image" content="https://www.eduard-dev.io/og-image.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -22,17 +41,110 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Eduard P.",
-      "jobTitle": "AI Software Engineer",
-      "address": { "@type": "PostalAddress", "addressCountry": "GB" },
-      "sameAs": ["https://github.com/EduardP19", "https://www.linkedin.com/in/eduard-p-34a06b232"]
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://www.eduard-dev.io/#person",
+          "name": "Eduard Proca",
+          "givenName": "Eduard",
+          "familyName": "Proca",
+          "url": "https://www.eduard-dev.io/",
+          "image": "https://www.eduard-dev.io/og-image.png",
+          "jobTitle": "AI Software Engineer",
+          "description": "AI software engineer and full-stack web developer building production web apps, AI agents and automation platforms.",
+          "address": { "@type": "PostalAddress", "addressCountry": "GB" },
+          "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Bedfordshire" },
+          "knowsAbout": ["AI agents", "Business automation", "Web design", "Web development", "React", "Next.js", "TypeScript", "Node.js", "Supabase", "PostgreSQL", "Claude API", "Gemini", "Twilio", "Stripe"],
+          "sameAs": ["https://github.com/EduardP19", "https://www.linkedin.com/in/eduard-p-34a06b232"]
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://www.eduard-dev.io/#webpage",
+          "url": "https://www.eduard-dev.io/",
+          "name": "Eduard Proca — AI Software Engineer & Web Developer, UK",
+          "inLanguage": "en-GB",
+          "mainEntity": { "@id": "https://www.eduard-dev.io/#person" }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.eduard-dev.io/#website",
+          "url": "https://www.eduard-dev.io/",
+          "name": "Eduard Proca",
+          "publisher": { "@id": "https://www.eduard-dev.io/#person" }
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://www.eduard-dev.io/#services",
+          "name": "Eduard Proca — Web Design & Automation",
+          "url": "https://www.eduard-dev.io/#services",
+          "image": "https://www.eduard-dev.io/og-image.png",
+          "founder": { "@id": "https://www.eduard-dev.io/#person" },
+          "areaServed": { "@type": "Country", "name": "United Kingdom" },
+          "address": { "@type": "PostalAddress", "addressCountry": "GB" },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Freelance services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web design and development", "description": "Fast, mobile-first websites for small businesses, including booking and payments." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business automation", "description": "Lead capture, CRM integrations, email sequences and workflow automation." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI agents and assistants", "description": "AI chat and SMS assistants that answer questions, qualify leads and book appointments." } }
+            ]
+          }
+        }
+      ]
     }
   </script>
+  <style>
+    /* Pre-render shell: what crawlers and no-JS visitors see. React replaces it on mount. */
+    .seo-shell { max-width: 760px; margin: 0 auto; padding: 96px 16px; color: #ecebe6; background: #07070a; font-family: system-ui, sans-serif; line-height: 1.6; }
+    .seo-shell h1 { font-size: 40px; line-height: 1.1; margin-bottom: 16px; }
+    .seo-shell h2 { font-size: 22px; margin: 40px 0 12px; }
+    .seo-shell p, .seo-shell li { color: #8b8b95; }
+    .seo-shell a { color: #c8ff2e; }
+    .seo-shell ul { padding-left: 20px; }
+  </style>
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <main class="seo-shell">
+      <h1>Eduard Proca — AI Software Engineer &amp; Web Developer</h1>
+      <p>I build AI agents, automation platforms and production web apps with JavaScript/TypeScript, React,
+        Next.js, Node.js and Supabase. Production systems handling 10k+ monthly users, 250+ daily API requests,
+        CRM and third-party integrations. Based in the UK, available for developer roles — remote or hybrid.</p>
+
+      <h2>Selected work</h2>
+      <ul>
+        <li><strong>ProveIt</strong> — lead-generation and automation platform: multi-source lead ingestion, 180+
+          automated workflows a day, CRM integrations and a 27k-lead batch migration.</li>
+        <li><strong>Resevia</strong> — AI reception agent for beauty salons that recovers missed calls over SMS,
+          checks live availability and books appointments.</li>
+        <li><strong>The Bus Stop</strong>, <strong>Say I Do Weddings</strong>, <strong>The Memory Corners</strong>,
+          <strong>Txengo</strong>, <strong>Study and Succeed</strong> — client
+          websites with booking, payments and conversion-focused design.</li>
+      </ul>
+
+      <h2>Stack</h2>
+      <p>TypeScript, React, Next.js, Node.js, Python, Supabase, PostgreSQL, Tailwind CSS, Claude API, Gemini, MCP
+        servers, RAG, agentic workflows, Twilio, Stripe, Cal.com, Zapier, Vercel.</p>
+
+      <h2>Freelance web design &amp; automation</h2>
+      <p>Alongside my main role I take on a small number of freelance projects for UK small businesses:</p>
+      <ul>
+        <li><strong>Web design &amp; development</strong> — fast, mobile-first, SEO-ready websites with booking and
+          payments.</li>
+        <li><strong>Business automation</strong> — lead capture, CRM integrations, email sequences, Zapier and
+          webhooks.</li>
+        <li><strong>AI agents &amp; assistants</strong> — website chat and SMS assistants that answer, qualify and
+          book.</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>Email <a href="mailto:eduard.proca93@gmail.com">eduard.proca93@gmail.com</a> ·
+        <a href="https://www.linkedin.com/in/eduard-p-34a06b232">LinkedIn</a> ·
+        <a href="https://github.com/EduardP19">GitHub</a></p>
+    </main>
+  </div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

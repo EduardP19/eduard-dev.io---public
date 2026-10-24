@@ -113,3 +113,28 @@ export const EXPERIENCE = [
 
 export const ABOUT_TEXT =
   "I'm a developer who ships production systems, not tutorial projects. For 2+ years I've built automation-driven platforms, API integrations and AI agents — software that books appointments, qualifies leads and moves real money. I care about the boring parts too: retries, checkpoints, docs and handover. Now I want to do it inside a team that takes AI seriously."
+
+// Freelance offer — kept secondary to the portfolio, but crawlable for service searches.
+export const SERVICES = [
+  {
+    id: 'web',
+    title: 'Web design & development',
+    blurb:
+      'Fast, mobile-first websites for small businesses — designed, built, launched and handed over with docs your team can actually use.',
+    items: ['Custom design', 'SEO-ready builds', 'Booking & payments', 'Hosting & care'],
+  },
+  {
+    id: 'automation',
+    title: 'Business automation',
+    blurb:
+      'Forms, CRM, email and payments wired together so leads get followed up and admin runs itself — without another hire.',
+    items: ['Lead capture', 'CRM integrations', 'Email sequences', 'Zapier & webhooks'],
+  },
+  {
+    id: 'ai',
+    title: 'AI agents & assistants',
+    blurb:
+      'Assistants that answer questions, qualify leads and book appointments over chat or SMS — scoped tightly and tested before they go live.',
+    items: ['Website chat', 'Missed-call SMS', 'Booking agents', 'Claude & Gemini'],
+  },
+]

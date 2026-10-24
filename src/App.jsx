@@ -10,6 +10,7 @@ import ProjectsSection from './components/ProjectsSection'
 import Skills from './components/Skills'
 import ChatShowcase from './components/ChatShowcase'
 import About from './components/About'
+import Services from './components/Services'
 import Contact from './components/Contact'
 import ChatWidget from './components/ChatWidget'
 import CommandPalette from './components/CommandPalette'
@@ -131,6 +132,7 @@ function App() {
         <Skills />
         <ChatShowcase />
         <About />
+        <Services />
       </main>
 
       <Contact />

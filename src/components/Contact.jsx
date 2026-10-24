@@ -35,7 +35,7 @@ function Contact() {
   return (
     <section id="contact" className="contact">
       <div className="container">
-        <span className="eyebrow mono">(05) Contact</span>
+        <span className="eyebrow mono">(06) Contact</span>
         <MotionH2
           className="contact-title"
           variants={titleVariants}
@@ -56,7 +56,8 @@ function Contact() {
         <div className="contact-row">
           <p className="contact-lede">
             I&apos;m available for developer roles — ideally where AI is part of the product or
-            the workflow. If you need someone who ships and keeps learning, let&apos;s talk.
+            the workflow — and for select freelance web and automation projects. If you need
+            someone who ships and keeps learning, let&apos;s talk.
           </p>
 
           <Magnetic strength={0.5}>
@@ -126,7 +127,7 @@ function Contact() {
 
       <footer className="footer">
         <div className="container footer-row">
-          <span className="mono dim">© {new Date().getFullYear()} Eduard P.</span>
+          <span className="mono dim">© {new Date().getFullYear()} Eduard Proca</span>
           <span className="mono dim footer-built">Built with React, WebGL & a Gemini-powered agent</span>
           <button type="button" className="footer-top mono" onClick={() => scrollToTarget(0)}>
             Back to top <ArrowUp size={14} />
