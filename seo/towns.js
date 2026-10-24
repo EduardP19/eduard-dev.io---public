@@ -4,6 +4,8 @@
 
 export const TOWN_CONTENT = {
   'hemel-hempstead': {
+    geo: [51.753, -0.449],
+    map: { label: 'Hemel', side: 'above-left' },
     description:
       'Hemel Hempstead web designer and developer. Fast websites, business automation and AI assistants for local businesses — meet in person, get a written quote.',
     intro:
@@ -30,6 +32,8 @@ export const TOWN_CONTENT = {
   },
 
   watford: {
+    geo: [51.656, -0.396],
+    map: { label: 'Watford', side: 'right' },
     description:
       'Web design and automation for Watford businesses from a developer based in nearby Hemel Hempstead. Fast, SEO-ready websites, CRM automation and AI assistants.',
     intro:
@@ -56,6 +60,8 @@ export const TOWN_CONTENT = {
   },
 
   'st-albans': {
+    geo: [51.752, -0.336],
+    map: { label: 'St Albans', side: 'below' },
     description:
       'Web design and automation for St Albans businesses. Premium, mobile-first websites, online booking and AI assistants from a Hertfordshire developer you can meet in person.',
     intro:
@@ -82,6 +88,8 @@ export const TOWN_CONTENT = {
   },
 
   berkhamsted: {
+    geo: [51.760, -0.566],
+    map: { label: 'Berkhamsted', side: 'below' },
     description:
       'Web design for Berkhamsted businesses from a developer next door in Hemel Hempstead. Premium websites, bookings and enquiry automation for shops, hospitality and events.',
     intro:
@@ -108,6 +116,8 @@ export const TOWN_CONTENT = {
   },
 
   harpenden: {
+    geo: [51.815, -0.356],
+    map: { label: 'Harpenden', side: 'left' },
     description:
       'Web design and automation for Harpenden businesses. Refined websites, class and appointment booking, and simple automation from a developer based in nearby Hemel Hempstead.',
     intro:
@@ -134,6 +144,8 @@ export const TOWN_CONTENT = {
   },
 
   hatfield: {
+    geo: [51.763, -0.226],
+    map: { label: 'Hatfield', side: 'right' },
     description:
       'Web design and automation for Hatfield businesses. Fast, mobile-first websites, online booking and AI assistants from a Hertfordshire developer you can meet in person.',
     intro:
@@ -160,6 +172,8 @@ export const TOWN_CONTENT = {
   },
 
   'welwyn-garden-city': {
+    geo: [51.802, -0.206],
+    map: { label: 'Welwyn GC', side: 'right' },
     description:
       'Web design and automation for Welwyn Garden City businesses. Modern websites, form-to-CRM automation and AI assistants from a Hertfordshire developer.',
     intro:
@@ -186,6 +200,8 @@ export const TOWN_CONTENT = {
   },
 
   stevenage: {
+    geo: [51.903, -0.202],
+    map: { label: 'Stevenage', side: 'right' },
     description:
       'Web design, automation and AI agents for Stevenage businesses — from B2B suppliers to Old Town shops. Built by a Hertfordshire developer who ships production systems.',
     intro:
@@ -212,6 +228,8 @@ export const TOWN_CONTENT = {
   },
 
   hitchin: {
+    geo: [51.949, -0.283],
+    map: { label: 'Hitchin', side: 'left' },
     description:
       'Web design and automation for Hitchin and North Herts businesses. Modern websites, booking and simple automation from a Hertfordshire developer you can meet in person.',
     intro:
@@ -238,6 +256,8 @@ export const TOWN_CONTENT = {
   },
 
   'letchworth-garden-city': {
+    geo: [51.979, -0.229],
+    map: { label: 'Letchworth', side: 'right' },
     description:
       'Web design and automation for Letchworth Garden City businesses. Website rebuilds that keep your search traffic, plus quote forms and follow-up automation.',
     intro:
@@ -281,24 +301,28 @@ export const HUB_CONTENT = {
 export const PROJECTS = [
   {
     title: 'Say I Do Weddings',
+    brand: '#f6c7c1',
     tag: 'Wedding · Web design',
     image: '/projects/SayIDoWeddings - Home.webp',
     body: 'Conversion-focused site for a UK wedding planner, designed to feel premium and bring in higher-value enquiries.',
   },
   {
     title: 'The Memory Corners',
+    brand: '#57d6c4',
     tag: 'Events · Booking site',
     image: '/projects/TheMemoryCorner - Home.webp',
     body: 'Photo booth company site with online booking flows and event galleries, built to convert busy visitors fast.',
   },
   {
     title: 'ProveIt',
+    brand: '#6f9bff',
     tag: 'Automation · Platform',
     image: '/projects/ProvieIt - CF1.webp',
     body: 'Lead-generation platform handling 250+ API requests and 180+ automated workflows a day, with CRM integrations.',
   },
   {
     title: 'Resevia',
+    brand: '#c8ff2e',
     tag: 'AI agent',
     image: '/projects/Resevia - Home.webp',
     body: 'AI receptionist for beauty salons: recovers missed calls by SMS, checks live availability and books appointments.',
