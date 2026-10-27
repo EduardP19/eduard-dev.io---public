@@ -508,7 +508,7 @@ function contactSection(place, index) {
 <div class="contact-links">
 <a class="contact-link" href="mailto:${EMAIL}"><span class="mono dim">Email</span><span class="contact-link-main">${esc(EMAIL)}</span></a>
 <a class="contact-link" href="${LINKEDIN_URL}" rel="me"><span class="mono dim">LinkedIn</span><span class="contact-link-main">${roll('Connect')} ${icon('arrow', 16)}</span></a>
-<a class="contact-link" href="/"><span class="mono dim">Portfolio</span><span class="contact-link-main">${roll('eduard-dev.io')} ${icon('arrow', 16)}</span></a>
+<a class="contact-link" href="/"><span class="mono dim">Portfolio</span><span class="contact-link-main">${roll('eduard-dev.co.uk')} ${icon('arrow', 16)}</span></a>
 </div>
 </div>
 ${footer()}

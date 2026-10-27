@@ -12,16 +12,16 @@
     content="Portfolio of Eduard Proca, a UK AI software engineer building production web apps, AI agents and automation. Also available for freelance web design and business automation." />
   <meta name="author" content="Eduard Proca" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <link rel="canonical" href="https://www.eduard-dev.io/" />
+  <link rel="canonical" href="https://www.eduard-dev.co.uk/" />
 
   <meta property="og:type" content="profile" />
   <meta property="og:site_name" content="Eduard Proca" />
   <meta property="og:locale" content="en_GB" />
-  <meta property="og:url" content="https://www.eduard-dev.io/" />
+  <meta property="og:url" content="https://www.eduard-dev.co.uk/" />
   <meta property="og:title" content="Eduard Proca — AI Software Engineer &amp; Web Developer" />
   <meta property="og:description"
     content="AI agents, automation platforms and production web apps. Ask my AI anything about my work." />
-  <meta property="og:image" content="https://www.eduard-dev.io/og-image.png" />
+  <meta property="og:image" content="https://www.eduard-dev.co.uk/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Eduard Proca — AI Software Engineer" />
@@ -31,7 +31,7 @@
   <meta name="twitter:title" content="Eduard Proca — AI Software Engineer &amp; Web Developer" />
   <meta name="twitter:description"
     content="AI agents, automation platforms and production web apps. Ask my AI anything about my work." />
-  <meta name="twitter:image" content="https://www.eduard-dev.io/og-image.png" />
+  <meta name="twitter:image" content="https://www.eduard-dev.co.uk/og-image.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,12 +44,12 @@
       "@graph": [
         {
           "@type": "Person",
-          "@id": "https://www.eduard-dev.io/#person",
+          "@id": "https://www.eduard-dev.co.uk/#person",
           "name": "Eduard Proca",
           "givenName": "Eduard",
           "familyName": "Proca",
-          "url": "https://www.eduard-dev.io/",
-          "image": "https://www.eduard-dev.io/og-image.png",
+          "url": "https://www.eduard-dev.co.uk/",
+          "image": "https://www.eduard-dev.co.uk/og-image.png",
           "jobTitle": "AI Software Engineer",
           "description": "AI software engineer and full-stack web developer building production web apps, AI agents and automation platforms.",
           "address": { "@type": "PostalAddress", "addressCountry": "GB" },
@@ -59,26 +59,26 @@
         },
         {
           "@type": "ProfilePage",
-          "@id": "https://www.eduard-dev.io/#webpage",
-          "url": "https://www.eduard-dev.io/",
+          "@id": "https://www.eduard-dev.co.uk/#webpage",
+          "url": "https://www.eduard-dev.co.uk/",
           "name": "Eduard Proca — AI Software Engineer & Web Developer, UK",
           "inLanguage": "en-GB",
-          "mainEntity": { "@id": "https://www.eduard-dev.io/#person" }
+          "mainEntity": { "@id": "https://www.eduard-dev.co.uk/#person" }
         },
         {
           "@type": "WebSite",
-          "@id": "https://www.eduard-dev.io/#website",
-          "url": "https://www.eduard-dev.io/",
+          "@id": "https://www.eduard-dev.co.uk/#website",
+          "url": "https://www.eduard-dev.co.uk/",
           "name": "Eduard Proca",
-          "publisher": { "@id": "https://www.eduard-dev.io/#person" }
+          "publisher": { "@id": "https://www.eduard-dev.co.uk/#person" }
         },
         {
           "@type": "ProfessionalService",
-          "@id": "https://www.eduard-dev.io/#services",
+          "@id": "https://www.eduard-dev.co.uk/#services",
           "name": "Eduard Proca — Web Design & Automation",
-          "url": "https://www.eduard-dev.io/#services",
-          "image": "https://www.eduard-dev.io/og-image.png",
-          "founder": { "@id": "https://www.eduard-dev.io/#person" },
+          "url": "https://www.eduard-dev.co.uk/#services",
+          "image": "https://www.eduard-dev.co.uk/og-image.png",
+          "founder": { "@id": "https://www.eduard-dev.co.uk/#person" },
           "email": "eduard.proca93@gmail.com",
           "areaServed": [
             { "@type": "AdministrativeArea", "name": "Hertfordshire" },
@@ -106,7 +106,11 @@
     .seo-shell p, .seo-shell li { color: #8b8b95; }
     .seo-shell a { color: #c8ff2e; }
     .seo-shell ul { padding-left: 20px; }
+    /* With JS the preloader takes over, so keep the shell in the DOM but don't paint it. */
+    html.js .seo-shell { visibility: hidden; }
+    html.js body { background: #07070a; }
   </style>
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 
 <body>

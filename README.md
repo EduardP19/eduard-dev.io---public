@@ -1,4 +1,4 @@
-# Eduard's Portfolio — eduard-dev.io
+# Eduard's Portfolio — eduard-dev.co.uk
 
 A personal portfolio site built to demonstrate real-world frontend skills, AI integration, and live product thinking. The goal was never to show an exhaustive feature set — it was to ship a **live product that works**.
 

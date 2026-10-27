@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.eduard-dev.io/sitemap.xml
+Sitemap: https://www.eduard-dev.co.uk/sitemap.xml

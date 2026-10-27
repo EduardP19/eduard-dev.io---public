@@ -140,7 +140,7 @@ export const SERVICES = [
 ]
 
 // Local landing pages generated at build time (see seo/). Hub first.
-export const SITE_URL = 'https://www.eduard-dev.io'
+export const SITE_URL = 'https://www.eduard-dev.co.uk'
 export const SERVICE_AREAS = [
   { slug: 'hertfordshire', name: 'Hertfordshire' },
   { slug: 'hemel-hempstead', name: 'Hemel Hempstead' },

@@ -137,7 +137,7 @@ export async function logEduardDevEvent({
     p_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || null,
     p_user_agent: userAgent,
     p_metadata: {
-      site: 'eduard-dev.io',
+      site: 'eduard-dev.co.uk',
       recruiter_name: attribution.recruiter_name,
       recruiter_company: attribution.recruiter_company,
       recruiter_industry: attribution.recruiter_industry,
